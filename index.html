@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <!-- angular module is defined on html tag -->
-<html lang="en" ng-app="">
+<html lang="en" ng-app="spx">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale-1">
 	<title>Index thawing-savannah-39600</title>
+	
 	<!-- external stylesheets -->
-
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+	
 	<!-- local stylesheets -->
+	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<span>Index thawing-savannah-39600</span>
+<main>
+	<header>
+		<!-- navigation bar, is fixed -->
+		<nav>
 
+		</nav>
+	</header>
+
+	<!-- container -->
+	<div class="container">
+		<!-- HTML5 tags used within container -->
+		<span>Index thawing-savannah-39600</span>
+		<!-- views go here -->
+		<div ui-view></div>
+	</div>
+</main>
 	<!-- external JS dependencies -->
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 	<!-- local JS dependencies -->
+	<script src="app.js"></script>
+	<script src="routes/routes.js"></script>
 </body>
 </html>
