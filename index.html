@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width-device-width, initial-scale-1">
-	<title>Index thawing-savannah-39600</title>
+	<title>Spotify Playlist Extender</title>
 	
 	<!-- external stylesheets -->
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
@@ -17,14 +17,17 @@
 	<header>
 		<!-- navigation bar, is fixed -->
 		<nav>
-
 		</nav>
 	</header>
 
 	<!-- container -->
 	<div class="container">
 		<!-- HTML5 tags used within container -->
-		<span>Index thawing-savannah-39600</span>
+		<span>Spotify Playlist Extender / dev. mode</span>
+		<!-- sandbox-->
+		<br />
+		<span>Index</span> |
+		<a href="#/sandbox">Sandbox</a>
 		<!-- views go here -->
 		<div ui-view></div>
 	</div>
@@ -36,5 +39,11 @@
 	<!-- local JS dependencies -->
 	<script src="app.js"></script>
 	<script src="routes/routes.js"></script>
+
+	<!-- controllers -->
+	<script src="controllers/sandbox-controller.js"></script>
+
+	<!-- providers -->
+	<script src="providers/sandbox-prov.js"></script>
 </body>
 </html>

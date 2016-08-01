@@ -16,28 +16,35 @@
 			// state templates, similar to $routeProvider and .when in ng-route
 			$stateProvider
 				.state('about', {
-					url: "/about",
-					templateUrl: 'views/about.html',
-					controller: '',
+					url:          "/about",
+					templateUrl:  'views/about.html',
+					controller:   '',
 					controllerAs: ''
 				})
 				.state('/home', {
-					url: "/home",
-					templateUrl: 'views/home.html',
-					controller: 'homeController',
+					url:          "/home",
+					templateUrl:  'views/home.html',
+					controller:   'homeController',
 					controllerAs: 'homeCtrl'
 				})
 				.state('login', {
-					url: "/login",
-					templateUrl: 'views/login.html',
-					controller: 'loginController',
+					url:          "/login",
+					templateUrl:  'views/login.html',
+					controller:   'loginController',
 					controllerAs: 'loginCtrl'
 				})
 				.state('signup', {
-					url: "/signup",
-					templateUrl: 'views/signup.html',
-					controller: 'signupController',
+					url:          "/signup",
+					templateUrl:  'views/signup.html',
+					controller:   'signupController',
 					controllerAs: 'signupCtrl'
+				})
+				// remove on production
+				.state('sandbox', {
+					url:          "/sandbox",
+					templateUrl:  'views/sandbox.html',
+					controller:   'sandboxController',
+					controllerAs: 'sandboxCtrl'
 				})
 		});
 })();

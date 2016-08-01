@@ -5,7 +5,7 @@
 
 	// define module and bind controller
 	angular.module('spx')
-		.controller('exportController')
+		.controller('exportController');
 
 	// inject dependencies
 	exportController.$inject = [];

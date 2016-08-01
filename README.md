@@ -1,4 +1,4 @@
-# thawing-savannah-39600
+# spx
 yc app
 
 Algemeen
