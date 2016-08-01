@@ -26,6 +26,17 @@
 				console.log(err);
 			});
 		}
+
+		vm.rsobjects = [];
+
+		vm.getRandomObjectTrackInfo = function () {
+			sandboxFactory.getRandomTrackObjectInfo()
+			.then(function success (result) {
+				var data = result.data;
+				vm.rsobjects = data;
+				console.log(vm.objects);
+			});
+		}
 	}
 
 })();

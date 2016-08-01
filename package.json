@@ -1,5 +1,5 @@
 {
-  "name": "Spotify Playlist Extender",
+  "name": "spx",
   "version": "0.0.1",
   "description": "YC WAO case",
   "main": "index.html",
@@ -24,6 +24,8 @@
     "fs-extra": "^0.30.0",
     "jquery": "^3.1.0",
     "mongodb": "^2.2.4",
-    "mongoose": "^4.5.7"
+    "mongoose": "^4.5.7",
+    "querystring": "^0.2.0",
+    "request": "^2.74.0"
   }
 }
