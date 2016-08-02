@@ -4,3 +4,16 @@
 * {
 	
 }
+
+.view {
+	margin-top: 3em;
+}
+
+.view-ctrl {
+	margin-top: 1em;
+}
+
+.form-ctrl input {
+	display: block;
+	margin-bottom: 1em;
+}

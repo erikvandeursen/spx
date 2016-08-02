@@ -7,42 +7,51 @@
 */
 
 (function () {
-	// define module and add ui-route as a dependency on it
+	/* define module and add ui-route as a dependency on it */
 	angular.module('spx', ['ui.router'])
 		.config(function($stateProvider, $urlRouterProvider) {
 			
 			$urlRouterProvider.otherwise("/");
 
-			// state templates, similar to $routeProvider and .when in ng-route
+			/* state templates, similar to $routeProvider and .when in ng-route */
 			$stateProvider
+				/* public */
 				.state('about', {
 					url:          "/about",
-					templateUrl:  'views/about.html',
+					templateUrl:  'views/public/about.html',
 					controller:   '',
 					controllerAs: ''
 				})
-				.state('/home', {
+				.state('home', {
 					url:          "/home",
-					templateUrl:  'views/home.html',
+					templateUrl:  'views/public/home.html',
 					controller:   'homeController',
 					controllerAs: 'homeCtrl'
 				})
 				.state('login', {
 					url:          "/login",
-					templateUrl:  'views/login.html',
-					controller:   'loginController',
-					controllerAs: 'loginCtrl'
+					templateUrl:  'views/public/login.html',
+					controller:   'homeController',
+					controllerAs: 'homeCtrl'
 				})
 				.state('signup', {
 					url:          "/signup",
-					templateUrl:  'views/signup.html',
+					templateUrl:  'views/public/signup.html',
 					controller:   'signupController',
 					controllerAs: 'signupCtrl'
 				})
-				// remove on production
+				/* user */
+				.state('dashboard', {
+					url: 		   "/user/dashboard",
+					templateUrl:   "views/user/dashboard.html",
+					controller:    "",
+					controllerAs:  ""  
+				})
+
+				// sandbox
 				.state('sandbox', {
 					url:          "/sandbox",
-					templateUrl:  'views/sandbox.html',
+					templateUrl:  'sandbox/sandbox.html',
 					controller:   'sandboxController',
 					controllerAs: 'sandboxCtrl'
 				})

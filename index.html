@@ -23,14 +23,21 @@
 	<!-- container -->
 	<div class="container">
 		<!-- HTML5 tags used within container -->
-		<span>Spotify Playlist Extender / dev. mode</span>
-		<!-- sandbox-->
+		<span>Spotify Playlist Extender | dev. mode</span>
+		
 		<br />
-		<span>Index</span> |
-		<a href="#/sandbox">Sandbox</a>
 		<!-- views go here -->
+		<!--<div ui-view></div>-->
+
+		<!-- sandbox -->
+		<a href="#">Index</a> |
+		<a href="#/home">Home</a> |
+		<a href="#/login">Login</a> |
+		<a href="#/signup">Signup</a> |
+		<a href="#/user/dashboard">Dashboard</a>
 		<div ui-view></div>
 	</div>
+
 </main>
 	<!-- external JS dependencies -->
 	<script src="node_modules/angular/angular.min.js"></script>
@@ -41,9 +48,13 @@
 	<script src="routes/routes.js"></script>
 
 	<!-- controllers -->
-	<script src="controllers/sandbox-controller.js"></script>
+	<script src="controllers/home-controller.js"></script>
 
 	<!-- providers -->
-	<script src="providers/sandbox-prov.js"></script>
+	<script src="providers/login-prov.js"></script>
+
+	<!-- sandbox stuff -->
+	<script src="sandbox/sandbox-controller.js"></script>
+	<script src="sandbox/sandbox-prov.js"></script>
 </body>
 </html>

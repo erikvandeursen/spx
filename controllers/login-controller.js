@@ -2,5 +2,9 @@
 (function () {
 	'use strict'; 
 
-	//mod
+	angular.module('spx')
+		.controller('loginController', loginController);
+	
+	/* inject factory */
+	
 })();	
