@@ -8,17 +8,6 @@
 		.controller('homeController', homeController);
 
 	// inject dependencies
-	homeController.$inject = ['loginFactory'];
+	homeController.$inject = ['$stateProvider'];
 
-	// function exportController
-	function homeController () {
-		//...
-		var vm = this;
-		vm.sendMsg = "Controller gezien";
-
-		vm.showLoginMenu = function () {
-			console.log('seen');
-			loginFactory.showLoginMenu();
-		}
-	}
 })();

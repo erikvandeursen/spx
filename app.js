@@ -25,14 +25,14 @@
 				.state('home', {
 					url:          "/home",
 					templateUrl:  'views/public/home.html',
-					controller:   'homeController',
-					controllerAs: 'homeCtrl'
+					controller:   '',
+					controllerAs: ''
 				})
 				.state('login', {
 					url:          "/login",
 					templateUrl:  'views/public/login.html',
-					controller:   'homeController',
-					controllerAs: 'homeCtrl'
+					controller:   'loginController',
+					controllerAs: 'loginCtrl'
 				})
 				.state('signup', {
 					url:          "/signup",
