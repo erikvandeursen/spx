@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 	
 	<!-- local stylesheets -->
-	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="app/layout/css/style.css"/>
 </head>
 <body>
 <main>
@@ -23,7 +23,7 @@
 	<!-- container -->
 	<div class="container">
 		<!-- HTML5 tags used within container -->
-		<span>Spotify Playlist Extender | dev. mode</span>
+		<span><strong>Spotify Playlist Extender</strong> | dev. mode</span>
 		
 		<br />
 		<!-- views go here -->
@@ -44,17 +44,17 @@
 	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 	<!-- local JS dependencies -->
-	<script src="app.js"></script>
-	<script src="routes/routes.js"></script>
+	<script src="app/app.js"></script>
+	<script src="server/server.js"></script>
 
 	<!-- controllers -->
-	<script src="controllers/home-controller.js"></script>
+	<script src="app/controllers/home.controller.js"></script>
 
 	<!-- providers -->
-	<script src="providers/login-prov.js"></script>
+	<script src="app/providers/login.prov.js"></script>
 
 	<!-- sandbox stuff -->
-	<script src="sandbox/sandbox-controller.js"></script>
-	<script src="sandbox/sandbox-prov.js"></script>
+	<script src="_sandbox/sandbox-controller.js"></script>
+	<script src="_sandbox/sandbox-prov.js"></script>
 </body>
 </html>
