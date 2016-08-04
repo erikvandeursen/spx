@@ -1,7 +1,6 @@
 # spx
-yc app
 
-The Spotify Playlist Extender (SPX) is my endproduct for the YoungCapital traineeship WAO.
+The Spotify Playlist Extender (SPX) is my product for the YoungCapital traineeship WAO.
 
 Basically it consists of an API built on top of the Spotify API to enrich playlists of given user.
 
