@@ -6,6 +6,6 @@ app.get('home', require('../app/controllers/home.controller.js'));
 
 /* app.get */
 app.get('/', function (req, res) {
-	console.log('Redirect to /home')
+	console.log('Redirect to /home');
 	return res.redirect('/home');
 });

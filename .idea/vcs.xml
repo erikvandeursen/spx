@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="D:\dev\demo\yc\spx\_sandbox\login\\mean-stack-registration-login-example" vcs="Git" />
+    <mapping directory="D:\dev\demo\yc\spx\_sandbox\login\mherman\mean-auth" vcs="Git" />
   </component>
 </project>

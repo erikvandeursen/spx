@@ -54,6 +54,6 @@
 					templateUrl:  './sandbox/sandbox.html',
 					controller:   'sandboxController',
 					controllerAs: 'sandboxCtrl'
-				})
+				});
 		});
 })();
