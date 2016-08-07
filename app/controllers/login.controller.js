@@ -13,23 +13,20 @@
 		//...
 		var vm = this;
 
-		vm.showLoginMenu = function () {
-			console.log('seen');
-			loginFactory.showLoginMenu();
+		vm.load = function {
+			$http.get('/logins')
+				.success(function (data, status, headers, config) {
+					$scope.logins = data;
+				})
+				.error (function (data, status, headers, config) {
+					console.log(status);
+					console.log(error);
+				})
 		}
 
-		/* verify input and return message */
-		
-		// http://jasonwatmore.com/post/2015/12/09/MEAN-Stack-User-Registration-and-Login-Example.aspx
-		vm.verify = function () {
-			/* get */
+		vm.load();
 
-			/* verify */
-
-			if () {
-
-			}
-		}
+		loginFactory.save();
 	}
 	
 })();	

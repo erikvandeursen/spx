@@ -14,13 +14,12 @@
 
 	var factory = {};
 
-	factory.sendMsg = "Factory gezien";
-
-		/* declare functions */
-		factory.showLoginMenu = function () {
-			
-			console.log('Login seen');
-		}
+	factory.save = function () {
+		$http.post('login', angular.toJson($scope.username, $scope.password))
+			.success(function () {
+				$scope.load();
+			});
+	};
 
 		return factory;
 	}
