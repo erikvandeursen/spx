@@ -34,8 +34,25 @@ app.get('/loginout', function (req, res) {
 	res.redirect('/');
 });
 
+app.get('register', function (req, res) {
+	res.render('register', {});
+});
+
+app.post('/register', function (req, res) {
+	User.register(new User({
+		username: req.body.username }),
+		req.body.password, function (err, account) {
+			if (err) {
+				return res.status(500).json ({
+					//...
+				})
+			}
+		}
+	}))
+});
+
 /* Listen to */
-app.listen(port.process.env || 3000, function () {
+app.listen(process.env.port || 3000, function () {
 	console.log('app listening op port 3000');
 });
 

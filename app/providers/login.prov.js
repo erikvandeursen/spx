@@ -12,7 +12,7 @@
 	/* declare loginFactory */
 	function loginFactory ($http, $q) {
 
-	var factory = {};
+	//var factory = {};
 
 	factory.save = function () {
 		$http.post('login', angular.toJson($scope.username, $scope.password))
