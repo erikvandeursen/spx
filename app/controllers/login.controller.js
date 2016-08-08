@@ -6,13 +6,19 @@
 		.controller('loginController', loginController);
 	
 	/* inject factory */
-	loginController.$inject = ['loginFactory'];
+	loginController.$inject = ['$location', 'loginFactory'];
 
 	// function exportController
-	function loginController () {
+	function loginController ($location, loginFactory) {
 		//...
 		var vm = this;
 
+		vm.cred = {
+			email: "",
+			password: ""
+		};
+
+		/*
 		vm.load = function {
 			$http.get('/logins')
 				.success(function (data, status, headers, config) {
@@ -27,6 +33,7 @@
 		vm.load();
 
 		loginFactory.save();
+		*/
 	}
 	
 })();	

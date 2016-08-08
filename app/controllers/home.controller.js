@@ -10,4 +10,8 @@
 	// inject dependencies
 	homeController.$inject = ['$stateProvider'];
 
+	function homeController () {
+		//...
+	}
+
 })();

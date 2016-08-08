@@ -47,6 +47,18 @@
 					controller:    "",
 					controllerAs:  ""  
 				})
+				.state('usersettings', {
+					url: 		   "/user/user_settings",
+					templateUrl:   "app/views/user/settings.user.html",
+					controller:    "",
+					controllerAs:  ""  
+				})
+				.state('spotifysettings', {
+					url: 		   "/user/spotify_settings",
+					templateUrl:   "app/views/user/settings.spotify.html",
+					controller:    "",
+					controllerAs:  ""  
+				})
 
 				// sandbox
 				.state('sandbox', {

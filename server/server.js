@@ -5,22 +5,16 @@
 
 /* requires */
 var express = require('express');
-var path = require('path');
 var bodyParser = require('body-parser');
-var favicon = require('favicon');
-var logger = require('logger');
-var cookieParser = require('cookie-parser');
 var passport = require('passport');
+var passportSpotify = require('passport-spotify');
 var mongoose = require('mongoose');
 
-//require('');
-//require('');
-
+/* define var app for Express */
 var app = express();
 
-// mongoose.connect('mongodb://localhost/todo');
-app.use(bodyParser.urlencoded({'extended' : 'true'}));
-app.use(bodyParser.json());
+/* Passport*/
+require('server/includes/spotify.password');
 
 /* Listen to */
 app.listen(process.env.port || 3000, function () {
@@ -28,45 +22,31 @@ app.listen(process.env.port || 3000, function () {
 });
 
 /* define routes */
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/'));
 
-/* app.get */
-app.get('/', function (req, res) {
-	console.log('Redirect to /home');
-	return res.redirect('/home');
-});
+/* Mongoose connection */
+//mongoose.connect('mongodb://localhost/spxdb');
 
-app.get('/dashboard', function (req, res) {
-	// ...
-});
+/* Passport and db connections */
+//require('./includes/passport.js');
+//require('./datasets/db.js');
 
-app.post('/login', function (req, res) {
-	var userdata = { username: req.body.username, password: req.body.password };
-	res.status(200).end();
-});
+/* set up the express application */
+app.use(bodyParser.urlencoded({'extended' : 'true'}));
+app.use(bodyParser.json());
 
-app.get('/loginout', function (req, res) {
-	req.logout();
-	res.redirect('/');
-});
+/* Passport config */
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get('register', function (req, res) {
-	res.render('register', {});
-});
+app.get('/auth/spotify',
+	passport.authenticate('spotify'),
+	function (req, res) {
+		//...
+	});
 
-/*
-app.post('/register', function (req, res) {
-	User.register(new User({
-		username: req.body.username }),
-		req.body.password, function (err, account) {
-			if (err) {
-				return res.status(500).json ({
-					//...
-				})
-			}
-		}
-	}))
-});
-*/
-
-module.exports = express;
+app.get('/auth/spotify/callback',
+	passport.authenticate('spotify', { failureRedirect: '/login'}),
+	function (req, res) {
+		res.redirect('/user/dashboard');
+	});
