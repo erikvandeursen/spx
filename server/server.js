@@ -5,13 +5,29 @@
 
 /* requires */
 var express = require('express');
+var path = require('path');
 var bodyParser = require('body-parser');
+var favicon = require('favicon');
+var logger = require('logger');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var mongoose = require('mongoose');
+
+//require('');
+//require('');
+
 var app = express();
 
+// mongoose.connect('mongodb://localhost/todo');
+app.use(bodyParser.urlencoded({'extended' : 'true'}));
 app.use(bodyParser.json());
 
-/* define routes */
+/* Listen to */
+app.listen(process.env.port || 3000, function () {
+	console.log('SPX app listening op port 3000');
+});
 
+/* define routes */
 app.use(express.static('public'));
 
 /* app.get */
@@ -38,6 +54,7 @@ app.get('register', function (req, res) {
 	res.render('register', {});
 });
 
+/*
 app.post('/register', function (req, res) {
 	User.register(new User({
 		username: req.body.username }),
@@ -50,10 +67,6 @@ app.post('/register', function (req, res) {
 		}
 	}))
 });
-
-/* Listen to */
-app.listen(process.env.port || 3000, function () {
-	console.log('app listening op port 3000');
-});
+*/
 
 module.exports = express;
