@@ -7,10 +7,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var passportSpotify = require('passport-spotify');
 var mongoose = require('mongoose');
 
 /* define var app for Express */
 var app = express();
+
+/* Passport*/
+//require('server/includes/spotify.password');
+
+/* Spotify web auth */
+require('server/includes/spotify.webauth.js');
 
 /* Listen to */
 app.listen(process.env.port || 3000, function () {
@@ -18,8 +25,7 @@ app.listen(process.env.port || 3000, function () {
 });
 
 /* define routes */
-app.use('/', express.static(__dirname + '/'));
-console.log(__dirname);
+app.use(express.static(__dirname + '/'));
 
 /* Mongoose connection */
 //mongoose.connect('mongodb://localhost/spxdb');
@@ -35,3 +41,15 @@ app.use(bodyParser.json());
 /* Passport config */
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get('/auth/spotify',
+	passport.authenticate('spotify'),
+	function (req, res) {
+		//...
+	});
+
+app.get('/auth/spotify/callback',
+	passport.authenticate('spotify', { failureRedirect: '/login'}),
+	function (req, res) {
+		res.redirect('/user/dashboard');
+	});

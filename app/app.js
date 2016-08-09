@@ -22,6 +22,12 @@
 					controller:   '',
 					controllerAs: ''
 				})
+				.state('auth', {
+					url:          "/auth",
+					templateUrl:  'app/views/public/auth.html',
+					controller:   '',
+					controllerAs: ''
+				})
 				.state('home', {
 					url:          "/home",
 					templateUrl:  'app/views/public/home.html',
