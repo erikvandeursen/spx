@@ -98,10 +98,8 @@ app.get('/callback', function (req, res, next) {
           console.log(body);
           console.log(access_token);
 
-        // get playlists
-        //request.get();
-
-        res.redirect('/#/dashboard');
+        //redirect
+        res.redirect('/#/user/dashboard');
 
         });
     }});
