@@ -37,6 +37,7 @@
     "passport-spotify": "^0.3.0",
     "path": "^0.12.7",
     "querystring": "^0.2.0",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "spotify-web-api-node": "^2.3.5"
   }
 }
