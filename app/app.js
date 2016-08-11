@@ -31,8 +31,8 @@
 				.state('auth_login', {
 					url:          "/auth_login",
 					templateUrl:  'app/views/public/auth.html',
-					controller:   '',
-					controllerAs: ''
+					controller:   'authController',
+					controllerAs: 'authCtrl'
 				})
 				.state('home', {
 					url:          "/home",
@@ -45,6 +45,12 @@
 					templateUrl:  'app/views/public/login.html',
 					controller:   'loginController',
 					controllerAs: 'loginCtrl'
+				})
+				.state('playlist', {
+					url:          "/user/playlists",
+					templateUrl:  'app/views/user/playlists.html',
+					controller:   'playlistController',
+					controllerAs: 'playlistCtrl'
 				})
 				.state('signup', {
 					url:          "/signup",
