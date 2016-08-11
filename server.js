@@ -38,6 +38,7 @@ app.use(express.static(__dirname + '/'));
 var state = 'aISD083q489fjef';
 
 var clientId = 'b33930b4b1704582a2dddef0f68e426e',
+  clientName = 'erikvandeursen',
 	clientSecret = '',
 	redirectUri = 'http://localhost:3000/callback',
 	scopes = ['playlist-read-private playlist-modify-public playlist-modify-private user-read-private user-read-birthdate user-read-email'],
@@ -82,7 +83,7 @@ app.get('/callback', function (req, res, next) {
   	}
 
   	request.post(authOptions, function(error, response, body) {
-      if (!error) {
+      if (!error && response.statusCode == 200) {
 
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
@@ -93,22 +94,35 @@ app.get('/callback', function (req, res, next) {
           json: true
         };
 
+        var playlistOptions = {
+          url: 'https://api.spotify.com/v1/users/' + clientName + '/playlists',
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+
+        request.get(playlistOptions, function(error, response, body) {
+          console.log(body);
+        });
+
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
           console.log(access_token);
 
-        //redirect
-        res.redirect('/#/user/dashboard');
+        //redirect to dashboard
+        res.redirect(200, '/#/user/dashboard');
+
 
         });
     }});
   }
 });
 
-app.get('user/dashboard', function (res, req) {
-	res.send('GET request to homepage');
-})
+
+app.get('/#/user/user_settings', function (res, req) {
+	var oauthPlaceholder = document.getElementById('#getspotifycurrentoken');
+	oauthPlaceholder.innerHTML = 'gezien'; //access_token;
+});
 
 /* Listen to */
 app.listen(process.env.port || 3000, function () {
