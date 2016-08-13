@@ -29,9 +29,9 @@
     "fs-extra": "^0.30.0",
     "jquery": "^3.1.0",
     "jsonwebtoken": "^7.1.7",
+    "localStorage": "^1.0.3",
     "mongodb": "^2.2.4",
     "mongoose": "^4.5.7",
-    "nodemon": "^1.10.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-spotify": "^0.3.0",
@@ -39,5 +39,8 @@
     "querystring": "^0.2.0",
     "request": "^2.74.0",
     "spotify-web-api-node": "^2.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
   }
 }

@@ -14,9 +14,14 @@
 	<h4>User settings</h4>
 	<p>Username, e-mail, playlists</p>
 
-	<p><strong>Username</strong></p><p id="getspotifyusername"></p>
+	<div ng-repeat="getUserInfo in vm.getUserInfo">
 
-	<p><strong>E-mail</strong></p><p id="getspotifyuseremail"></p>
+	<p><strong>Username</strong></p><p id="getspotifyusername">{{ getUserInfo.name }}</p>
 
-	<p><strong>Token</strong></p><p id="getspotifycurrentoken"></p>
+	<p><strong>E-mail</strong></p><p id="getspotifyuseremail">{{ getUserInfo.email }}</p>
+
+	<p><strong>Token</strong></p><p id="getspotifycurrentoken">getUserInfo.token  }}</p>
+
+
+	</div>
 </div>

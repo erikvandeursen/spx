@@ -34,6 +34,18 @@
 					controller:   'authController',
 					controllerAs: 'authCtrl'
 				})
+				.state('callback', {
+					url:          "/callback",
+					templateUrl:  'app/views/public/callback.html',
+					controller:   '',
+					controllerAs: ''
+				})
+				.state('error', {
+					url:          "/error",
+					templateUrl:  'app/views/public/error.html',
+					controller:   'errorController',
+					controllerAs: 'errorCtrl'
+				})
 				.state('home', {
 					url:          "/home",
 					templateUrl:  'app/views/public/home.html',
@@ -46,11 +58,11 @@
 					controller:   'loginController',
 					controllerAs: 'loginCtrl'
 				})
-				.state('playlist', {
-					url:          "/user/playlists",
-					templateUrl:  'app/views/user/playlists.html',
-					controller:   'playlistController',
-					controllerAs: 'playlistCtrl'
+				.state('logout', {
+					url:          "/login",
+					templateUrl:  'app/views/public/logout.html',
+					controller:   'loginController',
+					controllerAs: 'loginCtrl'
 				})
 				.state('signup', {
 					url:          "/signup",
@@ -65,17 +77,23 @@
 					controller:    "",
 					controllerAs:  ""  
 				})
-				.state('usersettings', {
-					url: 		   "/user/user_settings",
-					templateUrl:   "app/views/user/settings.user.html",
-					controller:    "",
-					controllerAs:  ""  
+				.state('playlist', {
+					url:          "/user/playlists",
+					templateUrl:  'app/views/user/playlists.html',
+					controller:   'playlistController',
+					controllerAs: 'playlistCtrl'
 				})
 				.state('spotifysettings', {
 					url: 		   "/user/spotify_settings",
 					templateUrl:   "app/views/user/settings.spotify.html",
-					controller:    "",
-					controllerAs:  ""  
+					controller:    "userController",
+					controllerAs:  "userCtrl"  
+				})
+				.state('usersettings', {
+					url: 		   "/user/user_settings",
+					templateUrl:   "app/views/user/settings.user.html",
+					controller:    "userController",
+					controllerAs:  "userCtrl"  
 				})
 
 				// sandbox

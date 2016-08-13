@@ -2,7 +2,7 @@
 
 var request = require('request');
 
-module.exports.getPlaylists = function () {
+module.exports.getPlaylists = function (req, res) {
 
 	/* request user info */
 	var playlistOptions = {
@@ -16,6 +16,7 @@ module.exports.getPlaylists = function () {
 
 			request.get(playlistOptions, function(error, response, body) {
 			 	console.log(body);
+
 			});
 	}});
 }
