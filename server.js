@@ -56,7 +56,7 @@ app.get('/callback', authController.handleAuthCallback);
 app.get('/error', errorController.errorHandling); // error handling
 app.post('/login', loginController.logIn);
 app.get('/logout', loginController.logOut);
-app.post('/register', signUpController.signUp);
+app.post('/signup', signUpController.signUp);
 app.get('/refresh_token', authController.getRefreshToken);
 //app.get('/user/dashboard', userController.showDashboard);
 //app.get('/user/user_settings', userController.getUserData);

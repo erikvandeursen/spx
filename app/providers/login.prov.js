@@ -14,8 +14,8 @@
 				return ({
 					isLoggedIn: isLoggedIn,
 					getUserStatus: getUserStatus,
-					login: login,
-					logout: logout
+					login: logIn,
+					logout: logOut
 				});
 
 				function isLoggedIn() {

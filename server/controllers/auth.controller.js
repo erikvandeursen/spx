@@ -111,14 +111,14 @@ module.exports.handleAuthCallback = function (req, res) {
 
 /* get a refresh token in case the original token expires (+ 1h) */
 module.exports.getRefreshToken = function (req, res) {
-	var access_token = body.access_token;
-	var refresh_token = body.refresh_token;
+	var access_token;
+	//var refresh_token = body.refresh_token;
 
 	/* requesting access token from refresh token */
 	var refresh_token = req.query.refresh_token;
 	var authOptions = {
 		url: 'https://accounts.spotify.com/api/token',
-		headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
+		headers: { 'Authorization': 'Basic ' + (new Buffer(clientId + ':' + clientSecret).toString('base64')) },
 		form: {
 	  		grant_type: 'refresh_token',
 	  		refresh_token: refresh_token
@@ -133,6 +133,9 @@ module.exports.getRefreshToken = function (req, res) {
 			res.send({
 				'access_token': access_token
 			});
+			res.redirect('/#/user/dashboard')
+		} else {
+			console.log('Error encountered while request refresh token: ' + error);
 		}
 	});
 };

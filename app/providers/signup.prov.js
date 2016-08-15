@@ -12,7 +12,7 @@
 
 				/* return available funciton for use in the controllers */
 				return ({
-					register: register
+					signUp: signUp
 				});
 
 				function signUp(username, password) {

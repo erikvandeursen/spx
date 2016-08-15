@@ -67,8 +67,8 @@
 				.state('signup', {
 					url:          "/signup",
 					templateUrl:  'app/views/public/signup.html',
-					controller:   'signupController',
-					controllerAs: 'signupCtrl'
+					controller:   'signUpController',
+					controllerAs: 'signUpCtrl'
 				})
 				/* user */
 				.state('dashboard', {

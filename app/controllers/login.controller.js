@@ -14,7 +14,7 @@
 					$scope.disabled = true;
 
 					/* Call login from service */
-					loginFactory($scope.loginForm.username, $scope.loginForm.password)
+					loginFactory.logIn($scope.loginForm.username, $scope.loginForm.password)
 
 						/* Handle if success */
 						.then(function () {
@@ -35,12 +35,12 @@
 	angular.module('spx')
 		.controller('logOutController',
 			['$scope', '$location', 'loginFactory',
-			function($scope, $location, loginFactory) {
+			function ($scope, $location, loginFactory) {
 
 			$scope.logout = function () {
 
 				/* Call logout from service */
-				AuthSeloginFactoryvice.logout()
+				loginFactory.logout()
 					.then(function () {
 						$location.path('/login');
 					});
