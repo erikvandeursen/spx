@@ -3,7 +3,7 @@
 (function () {
 	'use strict';
 
-	angular.module('spx', ['ngCookies'])
+	angular.module('spx.usersettings')
 		.factory('userInfoFactory', ['$http', '$q', '$cookies', function ($http, $q, $cookies) {
 
 	var factory = {};

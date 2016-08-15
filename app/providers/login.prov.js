@@ -3,7 +3,7 @@
 (function () {
 	'use strict'; 
 
-	angular.module('spx')
+	angular.module('spx.login', [])
 		.factory('loginFactory', ['$q', '$timeout', '$http',
 			function ($q, $timout, $http) {
 

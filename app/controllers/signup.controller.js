@@ -2,7 +2,7 @@
 (function () {
 	'use strict'; 
 
-	angular.module('spx')
+	angular.module('spx.signup')
 		.controller('signUpController',
 			['$scope', '$location', 'signUpFactory',
 			function ($scope, $location, signUpFactory) {
@@ -14,13 +14,13 @@
 					$scope.disabled = true;
 
 					/* Call register from service */
-					signUpFactory.register($scope.registerForm.username, $scope.registerForm.password)
+					signUpFactory.signUp($scope.signUpForm.username, $scope.signUpForm.email, $scope.signUpForm.password)
 
 						/* Handle success */
 						.then(function () {
 							$location.path('/login');
 							$scope.disabled = false;
-							$scope.registerForm = {};
+							$scope.signUpForm = {};
 						})
 
 						/* Handle errors */
@@ -28,7 +28,7 @@
 							$scope.error = true;
 							$scope.errorMessage = "Something went wrong";
 							$scope.disabled = false;
-							$scope.registerForm = {};
+							$scope.signUpForm = {};
 						});
 				};
 			}]);

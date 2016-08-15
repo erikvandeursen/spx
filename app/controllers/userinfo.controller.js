@@ -3,7 +3,7 @@
 (function () {
 	'use strict';
 
-	angular.module('spx')
+	angular.module('spx.usersettings', ['ngCookies'])
 		.controller('userInfoController', ['$scope', '$state', 'userInfoFactory', function ($scope, $state, userInfoFactory) {
 			
 			/* controller used for getting user info out of the Spotify API via factory */

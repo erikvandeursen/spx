@@ -8,8 +8,14 @@
 
 (function () {
 	/* define module and add ui-route as a dependency on it */
-	angular.module('spx', ['ui.router'])
-		.config(function($stateProvider, $urlRouterProvider) {
+
+	'use strict';
+
+	var spx = angular.module('spx', 
+		['ui.router', 'spx.login', 'spx.signup', 'spx.usersettings'/*, 'spx.playlists'*/]);
+
+		spx.config(['$stateProvider', '$urlRouterProvider',
+			function($stateProvider, $urlRouterProvider) {
 			
 			$urlRouterProvider.otherwise("/");
 
@@ -103,7 +109,7 @@
 					controller:   'sandboxController',
 					controllerAs: 'sandboxCtrl'
 				});
-		});
+		}]);
 	
 	/* Run the app on init and check if user is logged in / out */
 	/*
