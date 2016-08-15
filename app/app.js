@@ -59,7 +59,7 @@
 					controllerAs: 'loginCtrl'
 				})
 				.state('logout', {
-					url:          "/login",
+					url:          "/logout",
 					templateUrl:  'app/views/public/logout.html',
 					controller:   'loginController',
 					controllerAs: 'loginCtrl'
@@ -86,14 +86,14 @@
 				.state('spotifysettings', {
 					url: 		   "/user/spotify_settings",
 					templateUrl:   "app/views/user/settings.spotify.html",
-					controller:    "userController",
-					controllerAs:  "userCtrl"  
+					controller:    "userInfoController",
+					controllerAs:  "userInfoCtrl"  
 				})
 				.state('usersettings', {
 					url: 		   "/user/user_settings",
 					templateUrl:   "app/views/user/settings.user.html",
-					controller:    "userController",
-					controllerAs:  "userCtrl"  
+					controller:    "userInfoController",
+					controllerAs:  "userInfoCtrl"  
 				})
 
 				// sandbox
@@ -104,4 +104,20 @@
 					controllerAs: 'sandboxCtrl'
 				});
 		});
+	
+	/* Run the app on init and check if user is logged in / out */
+	/*
+	spx.run(function ($rootScope, $location, $route, AuthService) {
+		$rootScope.$on('$routeChangeStart',
+			function (event, next, current) {
+				AuthService.getUserStatus()
+				.then(function () {
+					if (next.access.restricted && !AuthService.isloggedIn()) {
+						$location.path('/login');
+						$route.reload();
+					}
+				});
+			});
+	});
+	*/
 })();

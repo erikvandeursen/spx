@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="app/layout/css/style.css"/>
 </head>
 <body>
+<noscript>
+    <div class="nojs">Javascript is either disabled or not supported in your browser. Please enable it or use a Javascript enabled browser.</div>
+  </noscript>
 <main>
 	<header>
 		<!-- navigation bar, is fixed -->
@@ -36,23 +39,32 @@
 		<a href="#/signup">Signup</a> |
 		<a href="#/auth">Auth</a> |
 		<a href="#/user/dashboard">Dashboard</a>
+
 		<div ui-view></div>
+
 	</div>
 
 </main>
 	<!-- external JS dependencies -->
 	<script src="node_modules/angular/angular.min.js"></script>
 	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="../node_modules/angular-cookies/angular-cookies.js"></script>
 	<!--<script src="server\includes\ext\r.js"></script>-->
 
 	<!-- local JS dependencies -->
 	<script src="app/app.js"></script>
 
-	<!-- controllers -->
-	<script src="app/controllers/home.controller.js"></script>
-
 	<!-- providers -->
 	<script src="app/providers/login.prov.js"></script>
+	<script src="app/providers/signup.prov.js"></script>
+	<script src="app/providers/userinfo.prov.js"></script>
+
+
+	<!-- controllers -->
+	<script src="app/controllers/home.controller.js"></script>
+	<script src="app/controllers/login.controller.js"></script>
+	<script src="app/controllers/signup.controller.js"></script>
+	<script src="app/controllers/userinfo.controller.js"></script>
 
 	<!-- sandbox stuff -->
 	<script src="_sandbox/sandbox-controller.js"></script>

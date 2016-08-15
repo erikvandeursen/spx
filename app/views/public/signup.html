@@ -1,13 +1,14 @@
 <div class="view">
 	<h3>Signup</h3>
 	<h5>Sign up to make use of SPX</h5>
+	 <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 	<div class="view-ctrl">
-		<form action="" method="post" class="form-ctrl">
-			<label for "signup-username">Your first name</label><input type="text" placeholder="Name" name="signup-username" autofocus>
-			<label for "signup-email">Your e-mailaddress</label><input type="text" placeholder="E-mail" name="signup-email">
+		<form action="#" method="post" class="form-ctrl" ng-submit="register()">
+			<label for "signup-username">Your first name</label><input type="text" placeholder="Name" name="signup-username" ng-model="registerForm.username" required autofocus>
+			<label for "signup-email">Your e-mailaddress</label><input type="text" placeholder="E-mail" name="signup-email ng-model="registerForm.password" required">
 			<label for "signup-passwordone">Your desired password</label><input type="password" name="signup-passwordone">
 			<label for "signup-passwordtwo">Please repeat your password</label><input type="password" name="signup-passwordtwo">
-			<input type="submit" value="Submit" />
+			<input type="submit" value="Submit" ng-disabled="disabled" />
 			<!-- Check password strength etc. JS validation -->
 		</form>
 		<p>Already have an account?<a href="/login">Click here</a></p>

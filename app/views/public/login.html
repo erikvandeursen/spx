@@ -1,11 +1,12 @@
 <div class="view">
 	<h3>Login</h3>
 	<p>Login with your e-mail address and password</p>
+	<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 	<div class="view-ctrl">
-		<form method="post" class="form-ctrl" ng-submit="vm.onSubmit">
-			<label for "login-email">Your e-mail</label><input type="email" name="login-email" placeholder="Your e-mailaddress" ng-model="vm.cred.email" autofocus />
-			<label for "login-password">Your password</label><input type="password" name="login-password" placholder="Your password" ng-model="vm.cred.password" />
-			<input type="submit" value="Log in" />
+		<form method="post" class="form-ctrl" ng-submit="login()">
+			<label for "login-email">Your e-mail</label><input type="email" name="login-email" placeholder="Your e-mailaddress" ng-model="loginForm.username" required autofocus />
+			<label for "login-password">Your password</label><input type="password" name="login-password" placholder="Your password" ng-model="loginForm.password" required />
+			<input type="submit" value="Log in" ng-disabled="disabled" />
 		</form>
 		<p><a href="/retrieve">Forgot your password?</a></p>
 		<p><a href="/signup">Don't have an account yet? Please sign up here</a></p>
