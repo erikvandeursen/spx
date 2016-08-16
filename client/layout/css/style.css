@@ -1,0 +1,32 @@
+/* additional CSS styling here */
+@charset 'UTF-8';
+
+* {
+	font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+}
+
+.view {
+	margin-top: 3em;
+}
+
+.view-ctrl {
+	margin-top: 1em;
+}
+
+.form-ctrl input {
+	display: block;
+	margin-bottom: 1em;
+}
+
+.introtext {
+	font-size: 2em;
+}
+
+.logo {
+	width: 33%;
+	heigth: 33%;
+}
+
+.intro {
+	padding-top: 3em;
+}

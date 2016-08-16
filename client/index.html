@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- angular module is defined on html tag -->
+<html lang="en" ng-app="spx">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale-1">
+	<title>Spotify Playlist Extender</title>
+	
+	<!-- external stylesheets -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+	
+	<!-- local stylesheets -->
+	<link rel="stylesheet" href="layout/css/style.css"/>
+</head>
+<body>
+<noscript>
+    <div class="nojs">Javascript is either disabled or not supported in your browser. Please enable it or use a Javascript enabled browser.</div>
+  </noscript>
+<main>
+	<header>
+		<!-- navigation bar, is fixed -->
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html">
+						<span class="navbar-title">Playlist Extender</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Jumbotron -->
+	<div class="jumbotron">
+		<div class="container">
+			<div class="intro">
+				<img src="/layout/img/Spotify_Logo_RGB_Black.png" alt="Logo Spotify" class="logo" />
+				<h3>Playlist Extender (SPX)</h3>
+				<p class="introtext">A single page application (SPA) which give you datavisualization on current playlists. It also enables you to create new playlists based on a set of variables.</p>
+				<a href="/token_request" class="btn btn-lg btn-primary">Login on Spotify</a> <br />
+			</div?
+		</div>
+	</div>
+		
+	<!-- views go here -->
+	<div ui-view></div>
+
+
+</main>
+	<!-- external JS dependencies -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-cookies.min.js"></script>
+
+	<!-- local JS dependencies -->
+	<script src="app.js"></script>
+
+	<!-- providers -->
+	<script src="/login/login.factory.js"></script>
+	<script src="/signup/signup.factory.js"></script>
+
+	<!-- controllers -->
+	<script src="/login/login.controller.js"></script>
+	<script src="/signup/signup.controller.js"></script>
+</body>
+</html>
