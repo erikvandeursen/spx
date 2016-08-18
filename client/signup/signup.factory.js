@@ -3,7 +3,7 @@
 (function () {
 	'use strict'; 
 
-	angular.module('spx.signup', [])
+	angular.module('spxSignup', [])
 		.factory('signUpFactory', ['$q', '$timeout', '$http',
 			function ($q, $timout, $http) {
 

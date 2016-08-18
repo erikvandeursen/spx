@@ -81,14 +81,14 @@ module.exports.handleAuthCallback = function (req, res) {
 			    
 			    /* if tokens are set redirect or throw error */
 			    if (setstoken && setsrtoken) {
-			    	res.redirect('/#/me') // /#/user/dashboard/?' +
+			    	res.redirect('/me') // /#/user/dashboard/?' +
 					/*queryString.stringify({
 						access_token: access_token,
 						refresh_token: refresh_token
 					}));  */
 			    } else {
 			    	/* error thrown: token couldn't be set */
-			    	res.redirect('/#/' + queryString.stringify({
+			    	res.redirect('/' + queryString.stringify({
         				error: 'token_set_wrong'
       				}));
 			    }
@@ -111,8 +111,8 @@ module.exports.handleAuthCallback = function (req, res) {
 
 /* get a refresh token in case the original token expires (+ 1h) */
 module.exports.getRefreshToken = function (req, res) {
-	var access_token;
-	//var refresh_token = body.refresh_token;
+	//var access_token;
+	res.cookie('spotifyAuthToken', access_token);
 
 	/* requesting access token from refresh token */
 	var refresh_token = req.query.refresh_token;
@@ -128,6 +128,7 @@ module.exports.getRefreshToken = function (req, res) {
 
 	/* get new access token */
 	request.post(authOptions, function(error, response, body) {
+		console.log(response + 'body: ' + body);
 		if (!error && response.statusCode === 200) {
 			var access_token = body.access_token;
 			res.send({

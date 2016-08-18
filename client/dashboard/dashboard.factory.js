@@ -1,16 +1,15 @@
-/* UserInfo prov - factory for handling user info from API calls */
+/* profile-controller.js - profile functionality */
 
-(function () {
-	'use strict';
+'use strict';
 
-	angular.module('spx.usersettings')
-		.factory('userInfoFactory', ['$http', '$q', '$cookies', function ($http, $q, $cookies) {
+angular.module('spxDashboard', ['ui.router', 'ngCookies'])
+	.factory('dashboardFactory', ['$http', '$q', '$cookies', function ($http, $q, $cookies) { 
 
 	var factory = {};
-
+			
 		factory.getUserInfo = function () {
 
-			function httpPromise() {
+			factory.httpPromise = function () {
 
 				/* define variabels to config http get request */
 				var deferred = $q.defer(),
@@ -27,13 +26,15 @@
 				$http.get(url, req)
 					.then(function successCallback(res) {
 						deferred.resolve(data.results);
+						console.log(res);
 		 			}, function errorCallback(err) {
 				    	deferred.reject();
+				    	console.log(err);
 		  			});
 				return deferred.promise;
 			}
 			return httpPromise();
 		}
-		return factory;
+	return factory;
+
 	}]);
-})

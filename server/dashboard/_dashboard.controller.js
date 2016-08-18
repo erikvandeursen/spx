@@ -3,9 +3,9 @@
 var request = require('request');
 var mongoose = require('mongoose');
 
-module.exports.showDashboard = function (req, res) {
-	/* get token */
-	var access_token = req.cookies.spotifyAuthToken;
+module.exports.showUserInfo = function (req, res) {
+	/* send controller and factory to /me */
+	
 }
 
 /* request user info */

@@ -2,7 +2,7 @@
 (function () {
 	'use strict'; 
 
-	angular.module('spx.login')
+	angular.module('spxLogin')
 		.controller('loginController', 
 			['$scope', '$location', 'loginFactory',
 			function ($scope, $location, loginFactory) {

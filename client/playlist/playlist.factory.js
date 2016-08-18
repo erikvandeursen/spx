@@ -3,7 +3,7 @@
 (function () {
 	'use strict';
 
-	angular.module('spx.playlists')
+	angular.module('spxPlaylist', [])
 		.factory('playlistFactory', ['$http', '$q', '$cookies', function ($http, $q, $cookies) {
 
 	var factory = {};
