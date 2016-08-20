@@ -13,6 +13,7 @@
 	/* define all modules with no dependencies on them */
 	//angular.module('spxDashboard', []);
 	//angular.module('spxPlaylist', []);
+	//angular.module('spxTracks', []);
 	//angular.module('spxD3', []);
 	//angular.module('spxLogin', []);
 	//angular.module('spxSignup', []);
@@ -22,6 +23,7 @@
 		'ui.router',
 		'spxDashboard',
 		'spxPlaylist',
+		'spxTracks',
 		//'spxD3',
 		//'spxLogin',
 		//'spxSignup'

@@ -5,6 +5,11 @@
 	font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 }
 
+thead span {
+	font-size: 2em;
+}
+
+
 .view {
 	margin-top: 3em;
 }
@@ -17,8 +22,12 @@
 
 }
 
-#userinfo {
+#userplaylists {
 
+}
+
+#featuredplaylists {
+	
 }
 
 #userinfo li {
@@ -28,4 +37,8 @@
 #avatar img {
 	width: 25%;
 	height: 25%;
+}
+
+#return {
+	float: right;
 }

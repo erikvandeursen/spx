@@ -55,9 +55,9 @@
 				})
 				.state('playlist', {
 					url:          "/me/playlist",
-					templateUrl:  'playlist/playlist.html',
-					controller:   'playlistController',
-					controllerAs: 'playlistCtrl'
+					templateUrl:  'tracks/tracks.html',
+					controller:   'trackController',
+					controllerAs: 'trackCtrl'
 				})
 				.state('playlistAll', {
 					url:          "/me/playlist/all",
