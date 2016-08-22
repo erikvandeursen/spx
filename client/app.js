@@ -10,7 +10,7 @@ console.log('app.js gezien');
 app.config(function($urlRouterProvider, $stateProvider) {
 	//$locationProvider.html5Mode(true);
 	
-	$urlRouterProvider.otherwise("/state1");
+	$urlRouterProvider.otherwise("/userinfo");
 
 	$stateProvider
 		/* public */
@@ -33,12 +33,12 @@ app.config(function($urlRouterProvider, $stateProvider) {
 			templateUrl: 'dashboard/userinfo.html',
 			controller: 'dashboardController'
 		})
-		.state('playlist', {
-			url: '/me/playlist',
+		.state('tracks', {
+			url: '/me/playlist/tracks',
 			templateUrl: 'track/tracks.html',
 			controller: 'trackController'
 		})
-		.state('allplaylists', {
+		.state('playlist', {
 			url: '/me/playlist/all',
 			templateUrl: 'playlist/playlist_all.html',
 			controller: 'playlistController'

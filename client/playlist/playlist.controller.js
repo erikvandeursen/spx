@@ -67,6 +67,6 @@ angular.module('spx')
 		/* get all tracks in a playlisy to render /me/playlist/:id endpoint */
 		var getPlaylistOnId = function (href) {
 			/* define variabels to config http get request from /browse/featured-playlists endpoint */
-			$window.location.href = 'angular-tracks-alldata-fixed-href.html#/' + href;
+			$window.location.href = '/me#/playlist/tracks' + href;
 		}
 }]);
