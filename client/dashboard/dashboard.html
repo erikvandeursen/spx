@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- angular module is defined on html tag -->
-<html lang="en" ng-app="spxDashboard">
+<html lang="en" ng-app="spx">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width-device-width, initial-scale-1">
@@ -12,7 +12,6 @@
 	
 	<!-- local stylesheets -->
 	<link rel="stylesheet" href="layout/css/style.css"/>
-	<link rel="stylesheet" href="layout/css/dashboard-style.css"/>
 </head>
 <body>
 <noscript>
@@ -28,71 +27,33 @@
 						<span class="navbar-title">Playlist Extender</span>
 					</a>
 					<ul class="nav navbar-nav">
-						<li><a href="/me">Userinfo</a></li>
-						<li><a href="/playlist/all">Playlists</a></li>
+						<li><a ui-sref="userinfo">Userinfo</a></li>
+						<li><a ui-sref="allplaylists">Playlists</a></li>
+						<!--<li><a href="/#/playlist/new">Create a playlist</a></li>-->
+						<li><a ui-sref="faq">FAQ</a></li>
+						<li><a ui-sref="about">About</a></li>
+						<li><a ui-sref="logout">Logout</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<!-- User info -->
-	<div class="view">
-		<div class="container">
-			<h3>
-				Your account:
-			</h3>
-			<div class="row" ng-controller="dashboardController">
-				<div class="col-md-4">
-					<div id="avatar">
-						<img src="{{ usercredential.display_name }}" />
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div id="userinfo">
-						<table class="table table-striped" ng-repeat="usercredential in usercredentials">
-							<tr><td>Display name: <td>{{ usercredential.display_name }}</tr>
-							<tr><td>E-mail: </td><td>{{ usercredential.email }}</td></tr>
-							<tr><td>Birthdate: </td><td>{{ usercredential.birthdate }}</td></tr>
-							<tr><td>Spotify URI: </td><td>{{ usercredential.uri }}</td></tr>
-							<tr><td>Country: </td><td>{{ usercredential.country }}</td></tr>
-							<tr><td>Product: </td><td>{{ usercredential.product }}</td></tr>
-							<tr><td>Followers: </td><td>{{ usercredential.followers }}</td></tr>
-							<tr><td>Link to webplayer: </td><td><a href="{{ usercredential.external_urls.spotify }}"</a> {{ usercredential.external_urls.spotify }}</td></tr>
-						</table>
-					</div>
-				</div>
-			</div>
-			<button class="btn btn-lg btn-success" ng-click="getAllPlaylists()">Show my playlists</button>
-			<button class="btn btn-lg btn-success" ng-click="createNewPlaylist()">Create new playlist</button>
-		</div>
-	</div>
-		
-	<!-- views go here -->
-
-	<div ng-show = "">
-		<div ui-view></div>
-	<div ng-hide>
+	<div ui-view></div>
 
 </main>
-
-	<!-- external JS dependencies -->
+	<!-- dependencies -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-cookies.min.js"></script>
-
+	
 	<!-- local JS dependencies -->
 	<script src="app.js"></script>
 
-
 	<!-- controllers -->
-	<script src="/dashboard/dashboard.controller.js"></script>
-	<script src="/playlist/playlist.controller.js"></script>
-	<script src="/track/track.controller.js"></script>
-
-	<!-- fix -->
-	
-	
+	<script src="/dashboard/dashboard.controller.js"></script> -->
+	<script src="/playlist/playlist.controller.js"></script> -->
+	<script src="/track/track.controller.js"></script>	-->
 
 </body>
 </html>

@@ -1,9 +1,29 @@
-<div class="view" ng-app="spxPlaylist">
-	
-	<h3>Dashboard</h3>
-
-	<!-- widgets here -->
-	<h4>Userinfo</h4>
-	<p>here...</p>
-	<div ng-controller=""></div>
+<div class="view">
+	<div class="container" ng-controller="dashboardController">
+		<h3>
+			Hi, {{ userdisplayname }}
+		</h3>
+		<div class="row" >
+			<div class="col-md-2">
+				<div id="avatar">
+					<img src="{{ userimg }}" />
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div id="userinfo">
+					<h4>Account info</h4>
+					<table class="table table-striped">
+						<tr><td>Display name: <td>{{ userdisplayname }}</tr>
+						<tr><td>E-mail: </td><td>{{ useremail }}</td></tr>
+						<tr><td>Birthdate: </td><td>{{ userbirthdate }}</td></tr>
+						<tr><td>Spotify URI: </td><td>{{ useruri }}</td></tr>
+						<tr><td>Country: </td><td>{{ usercountry }}</td></tr>
+						<tr><td>Product: </td><td>{{ userproduct }}</td></tr>
+						<tr><td>Followers: </td><td>{{ userfollowers }}</td></tr>
+						<tr><td>Link to webplayer: </td><td><a href="{{ userexternalurls }}">{{ userexternalurls }}</a> </td></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

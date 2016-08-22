@@ -1,44 +1,50 @@
-<div class="view" ng-app="spxTracks">
+<div class="view" ng-app="spx">
 
 <div>
 <h3>Playlists All</h3>
 <div class="container" ng-controller="trackController">
+	<div id="divider">
+		<div id="usertracks" class="col-md-8">
+			<form>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon"><span class="glyphicon glyphicon-sunglasses"></span></div>
+						<input type="text" class="form-control" placeholder="Search your tracks" ng-model="searchTracks">
+						</div>      
+				</div>
+			</form>
+			<!--
+				<div id="spotifyplayer" class="col-md-4">
+					<iframe src="https://embed.spotify.com/?uri=spotify:user:{{ }}:playlist:{{ }}&view=coverart" frameborder="0" allowtransparency="true"></iframe>
+				</div>
+			-->
+			<table class="table table-striped">
+				<thead>
+					<span>Tracks in playlist {{  }}</span>
+				</thead>
+				<tbody>
+					<tr>
+						<th><a href="#" ng-click="sortType = 'track.track.artists'; sortReverse = !sortReverse">Artist<span ng-show="sortType == 'track.track.artists' && !sortReverse" class="caret"></span></a></th>
 
-	<div id="usertracks" class="col-md-8">
-		<form>
-			<div class="form-group">
-				<div class="input-group">
-					<div class="input-group-addon"><span class="glyphicon glyphicon-sunglasses"></i></div>
-					<input type="text" class="form-control" placeholder="Search your tracks" ng-model="searchTracks">
-					</div>      
-			</div>
-		</form>
-		<!--
-			<div id="spotifyplayer" class="col-md-4">
-				<iframe src="https://embed.spotify.com/?uri=spotify:user:{{ }}:playlist:{{ }}&view=coverart" frameborder="0" allowtransparency="true"></iframe>
-			</div>
-		-->
-		<table class="table table-striped">
-			<thead><span>Tracks in playlist {{  }}</span></thead>
-			<tbody>
-				<tr>
-					<th><a href="#" ng-click="sortType = 'track.track.artists'; sortReverse = !sortReverse">Artist<span ng-show="sortType == 'track.track.artists' && !sortReverse" class="caret"></span></a></th>
+						<th><a href="#" ng-click="sortType = 'track.track.name'; sortReverse = !sortReverse">Title<span ng-show="sortType == 'track.track.name' && !sortReverse" class="caret"></span></a></th>
 
-					<th><a href="#" ng-click="sortType = 'track.track.name'; sortReverse = !sortReverse">Title<span ng-show="sortType == 'track.track.name' && !sortReverse" class="caret"></span></a></th>
+						<th><a href="#" ng-click="sortType = 'track.track.album.name'; sortReverse = !sortReverse">Album<span ng-show="sortType == 'track.track.album.name' && !sortReverse" class="caret"></span></a></th>
 
-					<th><a href="#" ng-click="sortType = 'track.track.album.name'; sortReverse = !sortReverse">Album<span ng-show="sortType == 'track.track.album.name' && !sortReverse" class="caret"></span></a></th>
+						<th><a href="#" ng-click="sortType = 'track.track.duration_ms'; sortReverse = !sortReverse">Duration<span ng-show="sortType == 'track.track.duration_ms' && !sortReverse" class="caret"></span></a></th>
 
-					<th><a href="#" ng-click="sortType = 'track.track.duration_ms'; sortReverse = !sortReverse">Duration<span ng-show="sortType == 'track.track.duration_ms' && !sortReverse" class="caret"></span></a></th>
-
-					<th><a href="#" ng-click="sortType = 'rack.added_at'; sortReverse = !sortReverse">Added on<span ng-show="sortType == 'track.added_at' && !sortReverse" class="caret"></span></a></th>
-				</tr>
-				<tr ng-repeat="track in tracks.data.items | orderBy:sortyType:sortReverse | filter:searchTracks">
-					<td>{{ track.track.artists.name }}</a></td><td>{{ track.track.name }}</td><td>{{ track.track.album.name }}</td><td>{{ track.track.duration_ms | date: 'mm:ss' }}</td><td>{{ track.added_at }}</td>
-				</tr>
-			</tbody>
-		</table>
+						<th><a href="#" ng-click="sortType = 'rack.added_at'; sortReverse = !sortReverse">Added on<span ng-show="sortType == 'track.added_at' && !sortReverse" class="caret"></span></a></th>
+					</tr>
+					<tr ng-repeat="track in tracks.data.items | orderBy:sortyType:sortReverse | filter:searchTracks">
+						<td>{{ track.track.artists[0].name }}</td><td>{{ track.track.name }}</td><td>{{ track.track.album.name }}</td><td>{{ track.track.duration_ms | date: 'mm:ss' }}</td><td>{{ track.added_at }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="trackvisual" class="col-md-4">
+			<p>Datafix</p>
+		</div>
 	</div>
-	<div id="trackvisual" class="col-md-4">
-		<p>Datafix</p>
+	<div id="backbtn" class="col-md-12">
+		<button class="btn btn-md btn-default" ng-click="goback('/playlist/all')">Back</button>
 	</div>
 </div>

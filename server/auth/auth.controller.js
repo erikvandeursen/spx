@@ -81,7 +81,7 @@ module.exports.handleAuthCallback = function (req, res) {
 			    
 			    /* if tokens are set redirect or throw error */
 			    if (setstoken && setsrtoken) {
-			    	res.redirect('/me') // /#/user/dashboard/?' +
+			    	res.redirect('me') // /#/user/dashboard/?' +
 					/*queryString.stringify({
 						access_token: access_token,
 						refresh_token: refresh_token

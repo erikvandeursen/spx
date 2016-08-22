@@ -1,31 +1,58 @@
-/* app. js
- # Angular ui-route is used here in favor of the native ng-route
- # Since the $stateProvider enables us to have multiple views on a single page
- # and further abstracts the use of Angular in js instead of the index.html file
- # and also gives us the option of parent-child relation
- # More on this: http://stackoverflow.com/questions/27645202/what-is-the-difference-between-routeprovider-and-stateprovider-in-angularjs
-*/
+/* app. js - setting up modules, routing and directives for Angular */
+(function() {
 
-(function () {
+'use strict';
+
+/* define main module spx and inject other modules on it */
+var app = angular.module('spx', ['ui.router', 'ngCookies']);
+console.log('app.js gezien');
+/* define routes */
+app.config(function($urlRouterProvider, $stateProvider) {
+	//$locationProvider.html5Mode(true);
 	
-	'use strict';
+	$urlRouterProvider.otherwise("/state1");
 
-	/* define all modules with no dependencies on them */
-	//angular.module('spxDashboard', []);
-	//angular.module('spxPlaylist', []);
-	//angular.module('spxTracks', []);
-	//angular.module('spxD3', []);
-	//angular.module('spxLogin', []);
-	//angular.module('spxSignup', []);
+	$stateProvider
+		/* public */
+		.state('about', {
+			url: '/about',
+			templateUrl: 'public/about.html',
+		})
+		.state('error', {
+			url: '/error',
+			templateUrl: 'error/error.html',
+			controller: 'errorController'
+		})
+		.state('faq', {
+			url: '/error',
+			templateUrl: 'public/faq.html',
+		})
+		/* user */
+		.state('userinfo', {
+			url: '/me/userinfo',
+			templateUrl: 'dashboard/userinfo.html',
+			controller: 'dashboardController'
+		})
+		.state('playlist', {
+			url: '/me/playlist',
+			templateUrl: 'track/tracks.html',
+			controller: 'trackController'
+		})
+		.state('allplaylists', {
+			url: '/me/playlist/all',
+			templateUrl: 'playlist/playlist_all.html',
+			controller: 'playlistController'
+		})
+		.state('newplaylist', {
+			url: '/me/playlist/new',
+			templateUrl: 'playlist/playlist_new.html',
+			controller: 'playlistController'
+		})
+		.state('logout', {
+			url: '/logout',
+			templateUrl: 'login/logout.html',
+			controller: 'loginController'
+		})
+      });
 
-	/* define main module and inject other modules in it */
-	angular.module('spx', [
-		'ui.router',
-		'spxDashboard',
-		'spxPlaylist',
-		'spxTracks',
-		//'spxD3',
-		//'spxLogin',
-		//'spxSignup'
-	]);
 })();
