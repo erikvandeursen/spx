@@ -24,7 +24,7 @@ app.config(function($urlRouterProvider, $stateProvider) {
 			controller: 'errorController'
 		})
 		.state('faq', {
-			url: '/error',
+			url: '/faq',
 			templateUrl: 'public/faq.html',
 		})
 		/* user */
