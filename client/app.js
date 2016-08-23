@@ -33,11 +33,6 @@ app.config(function($urlRouterProvider, $stateProvider) {
 			templateUrl: 'dashboard/userinfo.html',
 			controller: 'dashboardController'
 		})
-		.state('tracks', {
-			url: '/me/playlist/tracks',
-			templateUrl: 'track/tracks.html',
-			controller: 'trackController'
-		})
 		.state('playlist', {
 			url: '/me/playlist/all',
 			templateUrl: 'playlist/playlist_all.html',
@@ -51,7 +46,13 @@ app.config(function($urlRouterProvider, $stateProvider) {
 		.state('logout', {
 			url: '/logout',
 			templateUrl: 'login/logout.html',
-			controller: 'loginController'
+			controller: 'logOutController'
+		})
+		/* generative state */
+		.state('tracks', {
+			url: '/me/playlist/tracks',
+			templateUrl: 'track/tracks.html',
+			controller: 'trackController'
 		})
       });
 

@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 /* define controllers as dependencies */
 var authController = require('./auth/auth.controller.js');
 var errorController = require('./error/error.controller.js');
-var loginController = require('./login/login.controller.js');
+//var loginController = require('./login/login.controller.js');
 var signUpController = require('./signup/signup.controller.js');
 
 /* endpoint controllers with file callback */
