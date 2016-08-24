@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 var authController = require('./auth/auth.controller.js');
 var errorController = require('./error/error.controller.js');
 //var loginController = require('./login/login.controller.js');
-var signUpController = require('./signup/signup.controller.js');
+//var signUpController = require('./signup/signup.controller.js');
 
 /* endpoint controllers with file callback */
 /* static page (path) set to authenticate or default to root when page not found */

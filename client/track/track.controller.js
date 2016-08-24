@@ -8,7 +8,6 @@ angular.module('spx')
 
 		var res = [],
 			getAccessToken = $cookies.get('spotifyAuthToken'),
-			//userId = localStorage.getItem('spotifyAccountId'),
 			playlistId = localStorage.getItem('playlistId'),
 			playlistOwnerId = localStorage.getItem('playlistOwnerId');
 
@@ -16,6 +15,12 @@ angular.module('spx')
 		$scope.sortType = 'name';
 		$scope.sortReverse = false;
 		$scope.searchTracks   = '';
+
+		/* load tracks and set item in localStorage to identify track id's */
+		$scope.loadtrack = function (path) {
+			$location.path(path);
+			localStorage.setItem('trackid', path);
+		}
 
 		/* scope value for back button */
 		$scope.goback = function (path) {
@@ -134,7 +139,7 @@ angular.module('spx')
 								$scope.trackTotalValence = calcTotalValence;
 							} 
 							for (var i = 0; i < len; i++) {
-								var calcTotalTempo = total += res.data.audio_features[i].liveness;
+								var calcTotalTempo = total += res.data.audio_features[i].tempo;
 								var calcAvgTempo = total / len;
 								$scope.trackTotalTempo = calcTotalTempo;
 							} 

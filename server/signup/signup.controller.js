@@ -1,7 +1,7 @@
 /* signup.controller.js - Server side signup controller */
 
 /* dependencies */
-var passport = require('passport');
+//var passport = require('passport');
 var User = require('../datasets/users.js');
 
 /* module for signing up new user */

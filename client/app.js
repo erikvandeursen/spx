@@ -53,6 +53,11 @@ app.config(function($urlRouterProvider, $stateProvider) {
 			templateUrl: 'track/tracks.html',
 			controller: 'trackController'
 		})
+		.state('trackinfo', {
+			url: '/playlist/tracks/details',
+			templateUrl: 'track/trackinfo.html',
+			controller: 'trackInfoController'
+		})
       });
 
 })();
