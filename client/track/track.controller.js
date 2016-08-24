@@ -1,3 +1,4 @@
+/* all controls and handling for tracks in selected playlist, including visuals */
 'use strict';
 
 angular.module('spx')
@@ -7,11 +8,9 @@ angular.module('spx')
 
 		var res = [],
 			getAccessToken = $cookies.get('spotifyAuthToken'),
-			userId = localStorage.getItem('spotifyAccountId'),
+			//userId = localStorage.getItem('spotifyAccountId'),
 			playlistId = localStorage.getItem('playlistId'),
 			playlistOwnerId = localStorage.getItem('playlistOwnerId');
-
-		console.log('playlistId: ' + playlistId, ', playlistOwnerId: ' + playlistOwnerId);
 
 		/* values for sorting */
 		$scope.sortType = 'name';
@@ -23,6 +22,34 @@ angular.module('spx')
 			$location.path(path);
 		}
 
+		/* angular nvd3 visual */
+		$scope.optionsbar = {
+	            chart: {
+	                type: 'discreteBarChart',
+	                height: 450,
+	                margin : {
+	                    top: 20,
+	                    right: 20,
+	                    bottom: 50,
+	                    left: 55
+	                },
+	                x: function(d){return d.label;},
+	                y: function(d){return d.value;},
+	                showValues: true,
+	                valueFormat: function(d){
+	                    return d3.format(',.4f')(d);
+	                },
+	                duration: 500,
+	                xAxis: {
+	                    axisLabel: 'X Axis'
+	                },
+	                yAxis: {
+	                    axisLabel: 'Y Axis',
+	                    axisLabelDistance: -10
+	                }
+	            }
+			};
+
 		/* get all my playlists to render /me/playlist/:id endpoint */
 		var getTracks = function () {
 			/* define variabels to config http get request from /users/{user_id}/playlists/{playlist_id}/tracks */
@@ -33,19 +60,15 @@ angular.module('spx')
 					},
 					cache: true
 				}
-			
-			console.log(getAccessToken);
 
 			/* make request */
 			$http.get(url, req)		
 			.then(function successCallback(res) {
 					$scope.tracks = res;
-					//console.log($scope.tracks.data.items[0]);
 					var id = [];
 					for (var i = 0; i < res.data.items.length; i++) {
 						id.push(res.data.items[i].track.id);
 					}
-					console.log('var id: ' + id);
 					getTrackAudioFeats(id);
 	 			}, function errorCallback(err, status) {
 	 				var errorMsg = err;
@@ -59,7 +82,6 @@ angular.module('spx')
 		var getTrackAudioFeats = function (id) {
 			/* define variabels to config http get request /audio-features/{id} */
 			var getid = id;
-			console.log('parameter: ' + getid)
 			//var joinedids = getid.join(),
 			var	url = 'https://api.spotify.com/v1/audio-features/?ids=' + getid,
 				req = {	method: 'GET',
@@ -68,17 +90,99 @@ angular.module('spx')
 					},
 					cache: true
 				}
-				console.log('id in getTrackAudioFeats: ' + id);
 
 				/* make request */
 				$http.get(url, req)		
-				.then(function successCallback(res) {
-						$scope.audiofeats = res;
-						//console.log($scope.audiofeats);
-		 			}, function errorCallback(err, status) {
-		 				var errorMsg = err;
-						var status = status;
-				    	console.log('Error: ' + err, status);
-				    })
-		}
+					.then(function successCallback(res) {
+							$scope.audiofeats = res;
+							var len = res.data.audio_features.length;
+							var total = 0;
+
+							for (var i = 0; i < len; i++) {
+								var calcTotalDanceability = total += res.data.audio_features[i].danceability,
+									calcAvgDanceability = total / 100;
+								$scope.trackTotalDanceability = calcTotalDanceability;
+							}
+							for (var i = 0; i < len; i++) {
+								var calcTotalEnergy = total += res.data.audio_features[i].energy,
+									calcAvgEnergy = total / len;
+								$scope.trackTotalEnergy = calcTotalEnergy;
+							}
+							for (var i = 0; i < len; i++) {
+								var calcTotalLoudness = total += res.data.audio_features[i].loudness,
+								calcAvgLoudness = total / len;
+								$scope.trackTotalLoudness = calcTotalLoudness;
+							} 
+							for (var i = 0; i < len; i++) {
+								var calcTotalSpeechiness = total += res.data.audio_features[i].speechiness,
+								calcAvgSpeechiness = total / len;
+								$scope.trackTotalSpeechiness = calcTotalSpeechiness;
+							} 
+							for (var i = 0; i < len; i++) {
+								var calcTotalAcousticness = total += res.data.audio_features[i].acousticness,
+								calcAvgAcousticness = total / len;
+								$scope.trackTotalAcousticness = calcTotalAcousticness;
+							} 
+							for (var i = 0; i < len; i++) {
+								var calcTotalLiveness = total += res.data.audio_features[i].liveness,
+								calcAvgLiveness = total / len;
+								$scope.trackTotalLiveness = calcTotalLiveness;
+							} 
+							for (var i = 0; i < len; i++) {
+								var calcTotalValence = total += res.data.audio_features[i].valence,
+								calcAvgValence = total / len;
+								$scope.trackTotalValence = calcTotalValence;
+							} 
+							for (var i = 0; i < len; i++) {
+								var calcTotalTempo = total += res.data.audio_features[i].liveness;
+								var calcAvgTempo = total / len;
+								$scope.trackTotalTempo = calcTotalTempo;
+							} 
+
+						$scope.data = [
+				            {
+				                key: "Audio Features",
+				                values: [
+				                    {
+				                        "label" : "Dancebility" ,
+				                        "value" : calcAvgDanceability
+				                    } ,
+				                    {
+				                        "label" : "Energy" ,
+				                        "value" : calcAvgEnergy
+				                    } ,
+				                    {
+				                        "label" : "Loudness" ,
+				                        "value" : calcAvgLoudness
+				                    } ,
+				                    {
+				                        "label" : "Speechiness" ,
+				                        "value" : calcAvgSpeechiness
+				                    } ,
+				                    {
+				                        "label" : "Acousticness" ,
+				                        "value" : calcAvgAcousticness
+				                    } ,
+				                    {
+				                        "label" : "Liveness" ,
+				                        "value" : calcAvgLiveness
+				                    } ,
+				                    {
+				                        "label" : "Valence" ,
+				                        "value" : calcAvgValence
+				                    } ,
+				                    {
+				                        "label" : "Tempo" ,
+				                        "value" : calcAvgTempo
+				                    }
+				                ]
+				            }
+				        ]
+
+			 			}, function errorCallback(err, status) {
+			 				var errorMsg = err;
+							var status = status;
+					    	console.log('Error: ' + err, status);
+					    })
+			}
 }]);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- angular module is defined on html tag -->
+<!-- angular module is defined on html tag after assigning token -->
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -8,7 +8,7 @@
 	
 	<!-- external stylesheets -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
 	
 	<!-- local stylesheets -->
 	<link rel="stylesheet" href="layout/css/style.css"/>
@@ -19,7 +19,6 @@
   </noscript>
 <main>
 
-
 	<header>
 		<!-- navigation bar, is fixed -->
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -29,9 +28,7 @@
 						<span class="navbar-title">Playlist Extender</span>
 					</a>
 					<ul class="nav navbar-nav">
-						<!--<li><a href="/#/playlist/new">Create a playlist</a></li>-->
-						<li><a ui-sref="faq">FAQ</a></li>
-						<li><a ui-sref="about">About</a></li>
+						<!--<li><ui-sref="/#/playlist/new">Create a playlist</a></li>-->
 					</ul>
 				</div>
 			</div>
@@ -39,14 +36,14 @@
 	</header>
 
 	<!-- Jumbotron -->
-	<div class="jumbotron">
+	<div class="jumbotron" role="presentation">
 		<div class="container">
 
 			<div class="intro">
 				<img src="/layout/img/Spotify_Logo_RGB_White.png" alt="Logo Spotify" class="logo" />
 				<h3>Playlist Extender (SPX)</h3>
-				<p class="introtext">A single page application (SPA) which give you datavisualization on current playlists.</p>
-				<!--It also enables you to create new playlists based on a set of variables.-->
+				<p class="introtext">A single page application which give you datavisuals on your playlists.</p>
+				<!-- get auth token via /token_request path -->
 				<a href="/token_request" class="btn btn-lg btn-success">Login on Spotify</a> <br />
 			</div>
 		</div>
@@ -57,8 +54,5 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-cookies.min.js"></script>
-
-	<!-- controllers -->
-
 </body>
 </html>

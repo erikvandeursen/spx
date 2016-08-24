@@ -20,8 +20,6 @@ angular.module('spx')
 					cache: true
 				}
 
-			console.log(getAccessToken);
-
 			/* make request */
 			$http.get(url, req)		
 			.then(function successCallback(res) {

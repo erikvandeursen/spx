@@ -1,20 +1,23 @@
+<!-- HTML template for loading all users playlists into view -->
 <div class="view">
 
 	<div class="container" ng-controller="playlistController">
 		<div id="userplaylists">
-			<table class="table table-striped">
-				<thead><span>Your playlists</span></thead>
+			<table class="table table-striped" role="presentation">
+				<thead><h3>Your playlists</h3></thead>
 
+				<!-- search form -->
 				<form>
 					<div class="form-group">
 						<div class="input-group">
-							<div class="input-group-addon"><span class="glyphicon glyphicon-sunglasses"></span>
+							<div class="input-group-addon"><i class="fa fa-search"></i></span>
 							</div>
 							<input type="text" class="form-control" placeholder="Search your playlists" ng-model="searchPlaylists" />
 						</div>      
 					</div>
 				</form>
 
+				<!-- table with found playlists -->
 				<tbody>
 					<tr>
 						<th><a href="#" ng-click="sortType = 'playlist.name'; sortReverse = !sortReverse">Name<span ng-show="sortType == 'playlist.name' && !sortReverse" class="caret"></span></a></th>
@@ -22,7 +25,7 @@
 						<th><a href="#" ng-click="sortType = 'playlist.tracks.total'; sortReverse = !sortReverse"># tracks<span ng-show="sortType == 'playlist.tracks.total' && !sortReverse" class="caret"></span></a></th>
 					</tr>
 					<tr ng-repeat="playlist in playlists.data.items | orderBy:sortyType:sortReverse | filter:searchPlaylists">
-						<td><a ng-click="loadplaylist(playlist.id,playlist.owner.id)" ui-sref="tracks/{{ playlist.id }}">{{ playlist.name }}</a></td>
+						<td><a ng-click="loadplaylist(playlist.id,playlist.owner.id)" ui-sref="tracks">{{ playlist.name }}</a></td>
 						<td>{{ playlist.owner.id }}</td>
 						<td>{{ playlist.tracks.total }}</td>
 					</tr>

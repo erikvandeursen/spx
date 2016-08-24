@@ -1,5 +1,5 @@
 <div class="view">
-	<div class="container" ng-controller="dashboardController">
+	<div class="container" data-ng-controller="dashboardController">
 		<h3>
 			Hi, {{ userdisplayname }}
 		</h3>
@@ -12,7 +12,7 @@
 			<div class="col-md-10">
 				<div id="userinfo">
 					<h4>Account info</h4>
-					<table class="table table-striped">
+					<table class="table table-striped" role="presentation">
 						<tr><td>Display name: <td>{{ userdisplayname }}</tr>
 						<tr><td>E-mail: </td><td>{{ useremail }}</td></tr>
 						<tr><td>Birthdate: </td><td>{{ userbirthdate }}</td></tr>

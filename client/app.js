@@ -3,14 +3,13 @@
 
 'use strict';
 
-/* define main module spx and inject other modules on it */
-var app = angular.module('spx', ['ui.router', 'ngCookies']);
-console.log('app.js gezien');
+/* define module spx and inject dependencies on it */
+var app = angular.module('spx', ['ui.router', 'ngCookies', 'ngMaterial', 'nvd3']);
+
 /* define routes */
 app.config(function($urlRouterProvider, $stateProvider) {
-	//$locationProvider.html5Mode(true);
 	
-	$urlRouterProvider.otherwise("/userinfo");
+	$urlRouterProvider.otherwise("/");
 
 	$stateProvider
 		/* public */
@@ -29,17 +28,17 @@ app.config(function($urlRouterProvider, $stateProvider) {
 		})
 		/* user */
 		.state('userinfo', {
-			url: '/me/userinfo',
+			url: '/userinfo',
 			templateUrl: 'dashboard/userinfo.html',
 			controller: 'dashboardController'
 		})
 		.state('playlist', {
-			url: '/me/playlist/all',
+			url: '/playlist/all',
 			templateUrl: 'playlist/playlist_all.html',
 			controller: 'playlistController'
 		})
 		.state('newplaylist', {
-			url: '/me/playlist/new',
+			url: '/playlist/new',
 			templateUrl: 'playlist/playlist_new.html',
 			controller: 'playlistController'
 		})
@@ -50,7 +49,7 @@ app.config(function($urlRouterProvider, $stateProvider) {
 		})
 		/* generative state */
 		.state('tracks', {
-			url: '/me/playlist/tracks',
+			url: '/playlist/tracks',
 			templateUrl: 'track/tracks.html',
 			controller: 'trackController'
 		})

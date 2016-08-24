@@ -88,14 +88,14 @@ module.exports.handleAuthCallback = function (req, res) {
 					}));  */
 			    } else {
 			    	/* error thrown: token couldn't be set */
-			    	res.redirect('/' + queryString.stringify({
+			    	res.redirect('/error' + queryString.stringify({
         				error: 'token_set_wrong'
       				}));
 			    }
 
 			/* error thrown: problem found while instantiating token */
 			} else {
-				res.redirect('/#/' + queryString.stringify({
+				res.redirect('/error' + queryString.stringify({
         			error: 'token_instantiate'
       			}));
       		}
@@ -103,7 +103,7 @@ module.exports.handleAuthCallback = function (req, res) {
 
 	/* error thrown: HTTP status not 200 or wrong code */
 	} else {
-		res.redirect('/#/' + queryString.stringify({
+		res.redirect('/error' + queryString.stringify({
         	error: 'status_or_code_not_set'
     	}));
 	}

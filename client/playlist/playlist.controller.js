@@ -1,3 +1,4 @@
+/* all controls for loading and handling playlists as found on current user */
 'use strict';
 
 angular.module('spx')
@@ -24,7 +25,6 @@ angular.module('spx')
 			$location.path(path);
 			localStorage.setItem('playlistId', path);
 			localStorage.setItem('playlistOwnerId', ownerId);
-			getPlaylistOnId(path);
 		}
 
 		/* get all my playlists to render /me/playlist/all endpoint */
@@ -33,8 +33,6 @@ angular.module('spx')
 			
 			var	url = 'https://api.spotify.com/v1/me/playlists';
 			
-			console.log(getAccessToken);
-
 			/* make request */
 			$http.get(url, req)		
 			.then(function successCallback(res) {
@@ -64,9 +62,4 @@ angular.module('spx')
 			    })
 		}
 
-		/* get all tracks in a playlist to render /me/playlist/:id endpoint */
-		var getPlaylistOnId = function (href) {
-			/* define variabels to config http get request from /browse/featured-playlists endpoint */
-			$window.location.href = '/me#/playlist/tracks' + href;
-		}
 }]);
