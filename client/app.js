@@ -9,7 +9,7 @@ var app = angular.module('spx', ['ui.router', 'ngCookies', 'ngMaterial', 'nvd3']
 /* define routes */
 app.config(function($urlRouterProvider, $stateProvider) {
 	
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise("/userinfo");
 
 	$stateProvider
 		/* public */
@@ -21,10 +21,6 @@ app.config(function($urlRouterProvider, $stateProvider) {
 			url: '/error',
 			templateUrl: 'error/error.html',
 			controller: 'errorController'
-		})
-		.state('faq', {
-			url: '/faq',
-			templateUrl: 'public/faq.html',
 		})
 		/* user */
 		.state('userinfo', {

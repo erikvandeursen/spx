@@ -21,10 +21,11 @@ angular.module('spx')
 		$scope.searchPlaylists   = '';
 
 		/* load playlist and set item in localStorage to identify playlist id's */
-		$scope.loadplaylist = function (path, ownerId) {
+		$scope.loadplaylist = function (path, ownerId, trackAmount) {
 			$location.path(path);
 			localStorage.setItem('playlistId', path);
 			localStorage.setItem('playlistOwnerId', ownerId);
+			localStorage.setItem('playlistTrackAmount', trackAmount);
 		}
 
 		/* get all my playlists to render /me/playlist/all endpoint */

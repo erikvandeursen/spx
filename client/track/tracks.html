@@ -37,8 +37,8 @@
 
 						<th><a href="#" ng-click="sortType = 'rack.added_at'; sortReverse = !sortReverse">Added on<span ng-show="sortType == 'track.added_at' && !sortReverse" class="caret"></span></a></th>
 					</tr>
-					<tr ng-repeat="track in tracks.data.items | orderBy:sortyType:sortReverse | filter:searchTracks" slide-toggle="#derp">
-						<td><img src="{{ track.track.album.images[0].url }}" class="artworkimg" /></td>
+					<tr ng-repeat="track in tracks.data.items | orderBy:sortyType:sortReverse | filter:searchTracks">
+						<td><img src="{{ track.track.album.images[0].url }}" class="artworkimgrow" /></td>
 						<td>{{ track.track.artists[0].name }}</td><td><a ng-click="loadtrack(track.track.id)" ui-sref="trackinfo">{{ track.track.name }}</td><td>{{ track.track.album.name }}</td><td>{{ track.track.duration_ms | date: 'mm:ss' }}</td><td>{{ track.added_at | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
 					</tr>
 				</tbody>
@@ -53,17 +53,12 @@
 		<!-- table holding average values of first 99 items based on audio features endpoint -->
 		<div id="userplaylisttable" class="col-md-8">
 			<table class="table table-striped">
-				<thead><h3>Audio features</h3></thead>
+				<thead><h3>Additional information</h3></thead>
 				<tbody>
 					<tr><th>Key</th><th>Value</th></tr>
-					<tr><td>Danceability</td><td>{{ trackTotalDanceability }}</td></tr>
-					<tr><td>Energy</td><td>{{ trackTotalEnergy }}</td></tr>
-					<tr><td>Loudness</td><td>{{ trackTotalLoudness }}</td></tr>
-					<tr><td>Speechiness</td><td>{{ trackTotalSpeechiness }}</td></tr>
-					<tr><td>Acousticness</td><td>{{ trackTotalAcousticness }}</td></tr>
-					<tr><td>Liveness</td><td>{{ trackTotalLiveness }}</td></tr>
-					<tr><td>Valence</td><td>{{ trackTotalValence }}</td></tr>
-					<tr><td>Tempo</td><td>{{ trackTotalTempo }}</td></tr>
+					<tr><td>Number of tracks</th><td>{{ trackTotalAmount }}</td></tr>
+					<tr><td>Total duration</td><td>{{ trackTotalDuration | date: 'hh:mm:ss' }}</td></tr>
+					<tr><td>Average tempo (BPM)</td><td>{{ trackAvgTempo }}</td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -71,6 +66,6 @@
 
 	<!-- back button -->
 	<div id="backbtn" class="col-md-12">
-		<button class="btn btn-md btn-default" ng-click="goback('/playlist/all')">Back</button>
+		<button class="btn btn-md btn-success" ng-click="goback('/playlist/all')">Back</button>
 	</div>
 </div>

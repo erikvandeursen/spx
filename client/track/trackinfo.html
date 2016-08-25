@@ -4,48 +4,35 @@
 <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular></div></md-content>-->
 
 	<div class="container" ng-controller="trackInfoController">
-		<h3>{{ track.track.artists[0].name }} - {{ track.track.name }}</h3>
-		<div class="row" class="col-md-12">
+		<h3>{{ trackinfoartist }} - {{ trackinfoname }}</h3>
+		<div class="row">
 			<!-- specific track visual -->
-			<div class="albumart" class="col-md-4">
-				{{ art }}
+			<div class="albumart" class="col-md-6">
+				<img src="{{ trackinfoimg }}" class="artworkimg"/>
 			</div>
 
-			<div id="trackinfo" class="col-md-4">
+			<div id="trackinfo" class="col-md-6">
 				<table class="table table-striped" role="presentation">
 					<h4>Primary info</h4>
-						<tr><td>Artist: <td>{{ track.track.artists[0].name }}</tr>
-						<tr><td>Tracktitle: </td><td>{{ track.track.name }}</td></tr>
-						<tr><td>Album: </td><td>{{ track.track.album.name }}</td></tr>
-						<tr><td>Duration: </td><td>{{ track.track.duration_ms | date: 'mm:ss' }}</td></tr>
-						<tr><td>Track number: </td><td>{{ track.track.track_number  }}</td></tr>
-						<tr><td>Popularity: </td><td>{{ track.track.popularity }}</td></tr>
-						<tr><td>Added by: </td><td>{{ track.added_by.id }}</td></tr>
-						<tr><td>Added on: </td><td>{{ track.added_at | date: 'yyyy-MM-dd HH:mm:ss' }}</a> </td></tr>
+						<tr><td>Artist: <td>{{ trackinfoartist }}</tr>
+						<tr><td>Tracktitle: </td><td>{{ trackinfoname }}</td></tr>
+						<tr><td>Album: </td><td>{{ trackinfoalbum }}</td></tr>
+						<tr><td>Duration: </td><td>{{ trackinfoduration | date: 'mm:ss' }}</td></tr>
+						<tr><td>Track number: </td><td>{{ trackinfotrackno  }}</td></tr>
+						<tr><td>Popularity: </td><td>{{ trackinfospopularity }}</td></tr>
 				</table>
-				<table class="table table-striped" role="presentation">
-					<h4>Audio features</h4>
-						<tr><td>Danceability: <td>{{ userdisplayname }}</tr>
-						<tr><td>Energy: </td><td>{{ useremail }}</td></tr>
-						<tr><td>Loudness: </td><td>{{ userbirthdate }}</td></tr>
-						<tr><td>Speechiness: </td><td>{{ useruri }}</td></tr>
-						<tr><td>Acousticness: </td><td>{{ usercountry }}</td></tr>
-						<tr><td>Liveness: </td><td>{{ userproduct }}</td></tr>
-						<tr><td>Valence: </td><td>{{ userfollowers }}</td></tr>
-						<tr><td>Tempo: </td><td>{{ userexternalurls }}</a> </td></tr>
-				</table>
-			</div>
-
-			<!-- specific track visual -->
-			<div id="trackvisual" class="col-md-4">
-				<nvd3 options="optionsbar" data="data"></nvd3>
 			</div>
 		</div>
+
+		<!-- specific track visual -->
+		<div id="trackvisual" class="col-md-12">
+			<nvd3 options="optionsbar" data="data"></nvd3>
+			<p>Find more info on audio features <a href="https://developer.spotify.com/web-api/get-audio-features/" target="_blank">here</a></p>
+		</div>
+
 		<!-- back button -->
 		<div id="backbtn" class="col-md-12">
-			<button class="btn btn-md btn-default" ng-click="goback('/playlist/tracks')">Back</button>
-			<button class="btn btn-md btn-success" ng-click="goback('/playlist/tracks')">Preview</button>
-			<button class="btn btn-md btn-danger" ng-click="goback('/playlist/tracks')">Delete</button>
+			<button class="btn btn-md btn-success" ng-click="goback('/playlist/tracks')">Back</button>
 		</div>
 	</div>
 <div>

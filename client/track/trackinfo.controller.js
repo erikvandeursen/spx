@@ -17,31 +17,33 @@ angular.module('spx')
 
 		/* angular nvd3 visual */
 		$scope.optionsbar = {
-	            chart: {
-	                type: 'discreteBarChart',
-	                height: 450,
-	                margin : {
-	                    top: 20,
-	                    right: 20,
-	                    bottom: 50,
-	                    left: 55
-	                },
-	                x: function(d){return d.label;},
-	                y: function(d){return d.value;},
-	                showValues: true,
-	                valueFormat: function(d){
-	                    return d3.format(',.4f')(d);
-	                },
-	                duration: 500,
-	                xAxis: {
-	                    axisLabel: 'X Axis'
-	                },
-	                yAxis: {
-	                    axisLabel: 'Y Axis',
-	                    axisLabelDistance: -10
-	                }
-	            }
-			};
+            chart: {
+                type: 'discreteBarChart',
+                height: 450,
+                width: 750,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 50,
+                    left: 10
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                showValues: true,
+                valueFormat: function(d){
+                    return d3.format(',.4f')(d);
+                },
+                duration: 500,
+                xAxis: {
+                    axisLabel: 'Spotify Audio features'
+                },
+                yAxis: {
+                    axisLabel: 'Values',
+                    axisLabelDistance: -10
+                },
+                
+            }
+		};
 
 		/* get audio features */
 		var getTrackInfo = function () {
@@ -57,46 +59,68 @@ angular.module('spx')
 				/* make request */
 				$http.get(url, req)		
 					.then(function successCallback(res) {
-							$scope.audiofeats = res;
-							console.log(res);
-							console.log(res.data);
-							console.log(res.data.items);
+							$scope.trackinfoimg = res.data.album.images[0].url;
+							$scope.trackinfoartist = res.data.artists[0].name;
+							$scope.trackinfoname = res.data.name;
+							$scope.trackinfoalbum = res.data.album.name;
+							$scope.trackinfoduration = res.data.duration_ms;
+							$scope.trackinfotrackno = res.data.track_number;
+							$scope.trackinfospopularity = res.data.popularity;
+
+							getTrackSpecAudioFeats();
+
+			 			}, function errorCallback(err, status) {
+			 				var errorMsg = err;
+							var status = status;
+					    	console.log('Error: ' + err, status);
+					    })
+		}
+		getTrackInfo();
+
+		var getTrackSpecAudioFeats = function (id) {
+			/* define variabels to config http get request /audio-features/{id} */
+			var getid = id;
+			//var joinedids = getid.join(),
+			var	url = 'https://api.spotify.com/v1/audio-features/' + trackId,
+				req = {	method: 'GET',
+					headers: {
+						'Authorization': 'Bearer ' + getAccessToken
+					},
+					cache: true
+				}
+
+				/* make request */
+				$http.get(url, req)		
+					.then(function successCallback(res) {
+						console.log(res.data.danceability);
 							$scope.data = [
 				            {
 				                key: "Audio Features",
 				                values: [
 				                    {
 				                        "label" : "Dancebility" ,
-				                        "value" : res.data.audio_features[0].danceability
+				                        "value" : res.data.danceability
 				                    } ,
 				                    {
 				                        "label" : "Energy" ,
-				                        "value" : res.data.audio_features[0].energy
-				                    } ,
-				                    {
-				                        "label" : "Loudness" ,
-				                        "value" : res.data.audio_features[0].loudness
+				                        "value" : res.data.energy
 				                    } ,
 				                    {
 				                        "label" : "Speechiness" ,
-				                        "value" : res.data.audio_features[0].speechiness
+				                        "value" : res.data.speechiness
 				                    } ,
 				                    {
 				                        "label" : "Acousticness" ,
-				                        "value" : res.data.audio_features[0].acousticness
+				                        "value" : res.data.acousticness
 				                    } ,
 				                    {
 				                        "label" : "Liveness" ,
-				                        "value" : res.data.audio_features[0].liveness
+				                        "value" : res.data.liveness
 				                    } ,
 				                    {
 				                        "label" : "Valence" ,
-				                        "value" : res.data.audio_features[0].valence
-				                    } ,
-				                    {
-				                        "label" : "Tempo" ,
-				                        "value" : res.data.audio_features[0].tempo
-				                    }
+				                        "value" : res.data.valence
+				                    } 
 				                ]
 				            }
 				        ]
@@ -107,5 +131,5 @@ angular.module('spx')
 					    	console.log('Error: ' + err, status);
 					    })
 			}
-		getTrackInfo();
+
 }]);

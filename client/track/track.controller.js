@@ -9,7 +9,8 @@ angular.module('spx')
 		var res = [],
 			getAccessToken = $cookies.get('spotifyAuthToken'),
 			playlistId = localStorage.getItem('playlistId'),
-			playlistOwnerId = localStorage.getItem('playlistOwnerId');
+			playlistOwnerId = localStorage.getItem('playlistOwnerId'),
+			playlistTrackAmount = localStorage.getItem('playlistTrackAmount');
 
 		/* values for sorting */
 		$scope.sortType = 'name';
@@ -19,8 +20,11 @@ angular.module('spx')
 		/* load tracks and set item in localStorage to identify track id's */
 		$scope.loadtrack = function (path) {
 			$location.path(path);
-			localStorage.setItem('trackid', path);
+			localStorage.setItem('trackId', path);
 		}
+
+		/* display total of tracks found in the playlist */
+		$scope.trackTotalAmount = playlistTrackAmount;
 
 		/* scope value for back button */
 		$scope.goback = function (path) {
@@ -29,31 +33,32 @@ angular.module('spx')
 
 		/* angular nvd3 visual */
 		$scope.optionsbar = {
-	            chart: {
-	                type: 'discreteBarChart',
-	                height: 450,
-	                margin : {
-	                    top: 20,
-	                    right: 20,
-	                    bottom: 50,
-	                    left: 55
-	                },
-	                x: function(d){return d.label;},
-	                y: function(d){return d.value;},
-	                showValues: true,
-	                valueFormat: function(d){
-	                    return d3.format(',.4f')(d);
-	                },
-	                duration: 500,
-	                xAxis: {
-	                    axisLabel: 'X Axis'
-	                },
-	                yAxis: {
-	                    axisLabel: 'Y Axis',
-	                    axisLabelDistance: -10
-	                }
-	            }
-			};
+            chart: {
+                type: 'discreteBarChart',
+                height: 450,
+                width: 600,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 50,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                showValues: true,
+                valueFormat: function(d){
+                    return d3.format(',.4f')(d);
+                },
+                duration: 500,
+                xAxis: {
+                    axisLabel: 'Spotify Audio features'
+                },
+                yAxis: {
+                    axisLabel: 'Values',
+                    axisLabelDistance: -10
+                }
+            }
+		};
 
 		/* get all my playlists to render /me/playlist/:id endpoint */
 		var getTracks = function () {
@@ -71,9 +76,19 @@ angular.module('spx')
 			.then(function successCallback(res) {
 					$scope.tracks = res;
 					var id = [];
+					var len = res.data.items.length;
 					for (var i = 0; i < res.data.items.length; i++) {
 						id.push(res.data.items[i].track.id);
+						$scope.calcTotalAmount
 					}
+
+					/* calculate total duration based on all tracks */
+					for (var i = 0; i < playlistTrackAmount; i++) {
+						var total = 0
+						var calcTotalDuration = total += res.data.items[i].track.duration_ms;
+						$scope.trackTotalDuration = calcTotalDuration;
+					}
+
 					getTrackAudioFeats(id);
 	 			}, function errorCallback(err, status) {
 	 				var errorMsg = err;
@@ -101,48 +116,44 @@ angular.module('spx')
 					.then(function successCallback(res) {
 							$scope.audiofeats = res;
 							var len = res.data.audio_features.length;
-							var total = 0;
 
 							for (var i = 0; i < len; i++) {
-								var calcTotalDanceability = total += res.data.audio_features[i].danceability,
-									calcAvgDanceability = total / 100;
-								$scope.trackTotalDanceability = calcTotalDanceability;
+								var totalDanceability = 0;
+								var calcTotalDanceability = totalDanceability += res.data.audio_features[i].danceability,
+									calcAvgDanceability = totalDanceability / 100;
 							}
-							for (var i = 0; i < len; i++) {
-								var calcTotalEnergy = total += res.data.audio_features[i].energy,
-									calcAvgEnergy = total / len;
-								$scope.trackTotalEnergy = calcTotalEnergy;
+							for (var j = 0; j < len; j++) {
+								var totalEnergy = 0;
+								var calcTotalEnergy = totalEnergy += res.data.audio_features[j].energy,
+									calcAvgEnergy = totalEnergy / len;
 							}
-							for (var i = 0; i < len; i++) {
-								var calcTotalLoudness = total += res.data.audio_features[i].loudness,
-								calcAvgLoudness = total / len;
-								$scope.trackTotalLoudness = calcTotalLoudness;
+							for (var k = 0; k < len; k++) {
+								var totalSpeechiness = 0;
+								var calcTotalSpeechiness = totalSpeechiness += res.data.audio_features[k].speechiness,
+								calcAvgSpeechiness = totalSpeechiness / len;
 							} 
-							for (var i = 0; i < len; i++) {
-								var calcTotalSpeechiness = total += res.data.audio_features[i].speechiness,
-								calcAvgSpeechiness = total / len;
-								$scope.trackTotalSpeechiness = calcTotalSpeechiness;
+							for (var l = 0; l < len; l++) {
+								var totalAcousticness = 0;
+								var calcTotalAcousticness = totalAcousticness += res.data.audio_features[l].acousticness,
+								calcAvgAcousticness = totalAcousticness / len;
 							} 
-							for (var i = 0; i < len; i++) {
-								var calcTotalAcousticness = total += res.data.audio_features[i].acousticness,
-								calcAvgAcousticness = total / len;
-								$scope.trackTotalAcousticness = calcTotalAcousticness;
+							for (var m = 0; m < len; m++) {
+								var totalLiveness = 0;
+								var calcTotalLiveness = totalLiveness += res.data.audio_features[m].liveness,
+								calcAvgLiveness = totalLiveness / len;
 							} 
-							for (var i = 0; i < len; i++) {
-								var calcTotalLiveness = total += res.data.audio_features[i].liveness,
-								calcAvgLiveness = total / len;
-								$scope.trackTotalLiveness = calcTotalLiveness;
+							for (var n = 0; n < len; n++) {
+								var totalValence = 0;
+								var calcTotalValence = totalValence += res.data.audio_features[n].valence,
+								calcAvgValence = totalValence / len;
+							}
+							for (var o = 0; o < len; o++) {
+								var total = 0;
+								var calcTotalTempo = total += res.data.audio_features[o].tempo,
+								calcAvgTempo = Math.round(total / len);
+								$scope.trackAvgTempo = calcAvgTempo;
 							} 
-							for (var i = 0; i < len; i++) {
-								var calcTotalValence = total += res.data.audio_features[i].valence,
-								calcAvgValence = total / len;
-								$scope.trackTotalValence = calcTotalValence;
-							} 
-							for (var i = 0; i < len; i++) {
-								var calcTotalTempo = total += res.data.audio_features[i].tempo;
-								var calcAvgTempo = total / len;
-								$scope.trackTotalTempo = calcTotalTempo;
-							} 
+
 
 						$scope.data = [
 				            {
@@ -155,10 +166,6 @@ angular.module('spx')
 				                    {
 				                        "label" : "Energy" ,
 				                        "value" : calcAvgEnergy
-				                    } ,
-				                    {
-				                        "label" : "Loudness" ,
-				                        "value" : calcAvgLoudness
 				                    } ,
 				                    {
 				                        "label" : "Speechiness" ,
@@ -175,10 +182,6 @@ angular.module('spx')
 				                    {
 				                        "label" : "Valence" ,
 				                        "value" : calcAvgValence
-				                    } ,
-				                    {
-				                        "label" : "Tempo" ,
-				                        "value" : calcAvgTempo
 				                    }
 				                ]
 				            }

@@ -24,17 +24,17 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:f
 	transition: all 0.5s ease;	
 }
 
-.table  > tbody > tr > th, .table  > tbody > tr > td {
+.table  > tbody > tr > th, .table  > tbody > tr > td, p a {
 	border-style: none;
 }
 
-.table  > tbody > tr > th a, .table  > tbody > tr > td a {
+.table  > tbody > tr > th a, .table  > tbody > tr > td a, p a {
 	color: #1ed760;
 	transition: all 0.5s ease;
 	text-decoration: none;
 }
 
-.table  > tbody > tr > th a:hover, .table  > tbody > tr > td a:hover {
+.table  > tbody > tr > th a:hover, .table  > tbody > tr > td a:hover, p a:hover {
 	color: #fff;
 }
 
@@ -91,10 +91,6 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:f
 }
 
 .jumbotron-about {
-	background: url('../img/pexels-photo-mic.jpg') no-repeat center center;
-}
-
-.jumbotron-faq {
 	background: url('../img/pexels-photo-14548.jpeg') no-repeat center center;
 }
 
@@ -113,31 +109,48 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:f
 }
 
 .artworkimg {
-	width: 4em;
-	height: 4em;
-	margin: 0 auto;	
+	width: 33%;
+	height: 33%;	
+}
+
+.artworkimg {
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+.artworkimgrow {
+	width: 50%;
+	height: 50%;
+}
+
+.albumart > img, #useravatar > img {
+	min-height: 52px;
+	-webkit-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+	-moz-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+	box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+}
+
+#trackinfo {
+	margin-top: 20px;
 }
 
 #userprofile {
 	font-size: 2em;
 }
 
-#userplaylists {
-
-}
-
 #userinfo li {
 	list-style: none;
 }
 
-#avatar img {
+#useravatar {
+	margin-top: 10px;
+}
+
+#useravatar img {
 	width: 100%;
 	height: 100%;
 }
 
-#return {
-	float: right;
-}
 
 /* bootstrap override */
 
@@ -194,3 +207,11 @@ a {
 	-moz-box-shadow: 0px 0px 10px 0px rgba(30,215,96,1);
 	box-shadow: 0px 0px 10px 0px rgba(30,215,96,1);
 }
+
+#backbtn .btn-success {
+	background-color: #1ed760;
+	border-color: #1ed760;
+}
+
+
+/* nvd3 override */
