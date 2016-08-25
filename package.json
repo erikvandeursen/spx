@@ -4,34 +4,23 @@
   "description": "YC WAO case",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/erikvandeursen/thawing-savannah-39600.git"
+    "url": "git+https://github.com/erikvandeursen/spx.git"
   },
   "author": "Erik van Deursen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/erikvandeursen/thawing-savannah-39600/issues"
+    "url": "https://github.com/erikvandeursen/spx/issues"
   },
-  "homepage": "https://github.com/erikvandeursen/thawing-savannah-39600#readme",
+  "homepage": "https://github.com/erikvandeursen/spx#readme",
   "dependencies": {
-    "angular": "^1.5.8",
-    "angular-cookies": "^1.5.8",
-    "angular-nvd3": "^1.0.9",
-    "angular-route": "^1.5.8",
-    "angular-ui-router": "^0.3.1",
     "body-parser": "^1.15.2",
-    "bootstrap": "^3.3.7",
     "cookie-parser": "^1.4.3",
     "cookieparser": "^0.1.0",
-    "d3": "4.2.2",
     "express": "^4.14.0",
-    "express-session": "^1.14.0",
-    "mongodb": "^2.2.4",
-    "mongoose": "^4.5.7",
-    "nvd3": "^1.8.4",
     "path": "^0.12.7",
     "querystring": "^0.2.0",
     "request": "^2.74.0",

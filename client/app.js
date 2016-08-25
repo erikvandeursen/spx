@@ -9,7 +9,7 @@ var app = angular.module('spx', ['ui.router', 'ngCookies', 'ngMaterial', 'nvd3']
 /* define routes */
 app.config(function($urlRouterProvider, $stateProvider) {
 	
-	$urlRouterProvider.otherwise("/userinfo");
+	$urlRouterProvider.otherwise("/");
 
 	$stateProvider
 		/* public */

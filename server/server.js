@@ -42,6 +42,7 @@ var errorController = require('./error/error.controller.js');
 /* endpoint controllers with file callback */
 /* static page (path) set to authenticate or default to root when page not found */
 app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '../client'))).use(cookieParser());
 
 /* endpoint controllers with method callback */
@@ -62,6 +63,6 @@ app.use(function (req, res, next) {
 });
 
 /* Listen to */
-app.listen(process.env.port || 3000, function () {
-	console.log('SPX app listening op port 3000');
+app.listen(process.env.port || 5000, function () {
+	console.log('SPX app listening op port 5000');
 });
