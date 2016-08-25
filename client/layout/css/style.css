@@ -118,8 +118,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:f
 .artworkimgtrack {
 	margin-top: 10px;
 	margin-left: 15px;
-	height: auto; 
-    width: auto; 
+
     max-width: 350px; 
     max-height: 350px;
 }
@@ -129,6 +128,26 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:f
 	-webkit-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
 	-moz-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
 	box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+}
+
+.casestudy h3, h4 {
+	color: #1ed760;
+}
+
+.casestudy h4 {
+	margin-top: 25px;
+	margin-bottom: 10px;	
+}
+
+.casestudyimg {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 75%; 
+    width: 75%; 	
+	min-height: 52px;
+	-webkit-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+	-moz-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+	box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);	
 }
 
 #trackinfo {
