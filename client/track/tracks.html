@@ -38,7 +38,7 @@
 						<th><a href="#" ng-click="sortType = 'rack.added_at'; sortReverse = !sortReverse">Added on<span ng-show="sortType == 'track.added_at' && !sortReverse" class="caret"></span></a></th>
 					</tr>
 					<tr ng-repeat="track in tracks.data.items | orderBy:sortyType:sortReverse | filter:searchTracks">
-						<td><img src="{{ track.track.album.images[0].url }}" class="artworkimgrow" /></td>
+						<td><img src="{{ track.track.album.images[0].url }}" class="artworkimg" /></td>
 						<td>{{ track.track.artists[0].name }}</td><td><a ng-click="loadtrack(track.track.id)" ui-sref="trackinfo">{{ track.track.name }}</td><td>{{ track.track.album.name }}</td><td>{{ track.track.duration_ms | date: 'mm:ss' }}</td><td>{{ track.added_at | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
 					</tr>
 				</tbody>

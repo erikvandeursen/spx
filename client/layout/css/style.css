@@ -109,18 +109,19 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:f
 }
 
 .artworkimg {
-	width: 33%;
-	height: 33%;	
+	height: auto; 
+    width: auto; 
+    max-width: 100px; 
+    max-height: 100px;
 }
 
-.artworkimg {
+.artworkimgtrack {
 	margin-top: 10px;
 	margin-left: 15px;
-}
-
-.artworkimgrow {
-	width: 50%;
-	height: 50%;
+	height: auto; 
+    width: auto; 
+    max-width: 350px; 
+    max-height: 350px;
 }
 
 .albumart > img, #useravatar > img {
