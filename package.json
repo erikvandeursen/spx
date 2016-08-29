@@ -2,9 +2,9 @@
   "name": "spx",
   "version": "0.0.1",
   "description": "YC WAO case",
-  "main": "index.html",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "server/server.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,7 @@
     "express": "^4.14.0",
     "path": "^0.12.7",
     "querystring": "^0.2.0",
-    "request": "^2.74.0",
-    "spotify-web-api-node": "^2.3.5"
+    "request": "^2.74.0"
   },
   "devDependencies": {
     "nodemon": "^1.10.0"

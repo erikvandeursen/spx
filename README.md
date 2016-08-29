@@ -12,4 +12,4 @@ Future plans:
 - create new playlists based on audio features
 - refactoring the thing and tidy up some code :)
 
-For a working demo check Heroku (Spotify account required):
+For a working demo check Heroku (active Spotify account required): https://spotify-playlist-extender.herokuapp.com/
