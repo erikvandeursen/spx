@@ -2,3 +2,4 @@
 .idea
 _projectdocs
 _sandbox
+server/includes/configauth.json
