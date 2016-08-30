@@ -5,7 +5,7 @@ var request = require('request');
 var queryString = require('querystring');
 var express = require('express');
 var cookieParser = require('cookie-parser');
-var authprovider = require('./auth.prov.js');
+//var authprovider = require('./auth.prov.js');
 var userauth = require('../includes/userauth.json');
 var configauth = require('../includes/configauth.json');
 

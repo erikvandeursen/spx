@@ -41,7 +41,7 @@ var errorController = require('./error/error.controller.js');
 
 /* endpoint controllers with file callback */
 /* static page (path) set to authenticate or default to root when page not found */
-app.use(express.static(path.join(__dirname, '/')));
+//app.use(express.static(path.join(__dirname, '/')));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '../client'))).use(cookieParser());
 
