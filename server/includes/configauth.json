@@ -1,5 +1,5 @@
 {
   "client_secret": "",
-  "redirect_uri": "http://localhost:5000/token_callback",
-  "scopes": "playlist-read-private playlist-modify-public playlist-modify-private user-read-private user-read-birthdate user-read-email"
+  "redirect_uri": "",
+  "scopes": ""
 }
